@@ -10,9 +10,9 @@
         } Catch{
         $ContainerName="No read access"
         }
-        [PSCustomObject]@{
-            Container = $ContainerName
-            FileName = $file.Name
-            }
+        $tmp = "" | select Container,FileName
+        $tmp.Container = $ContainerName
+        $tmp.FileName = $file.name
+        $tmp
     }
 }
