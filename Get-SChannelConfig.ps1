@@ -1,28 +1,44 @@
 ﻿<#
 .Synopsis
-   Query Local or remote 
+   Query Local or Remote Computers for sChannel Settings
 .DESCRIPTION
-   Long description
+   Script to query local or remote computers for a clean list of SCHANNEL settings
 .EXAMPLE
-   Example of how to use this cmdlet
+   get-content c:\computers.txt | .\Get-SChannelConfig.ps1
+
+   This example will return the PROTOCOL settings for all computer objects in a text file called 'Computers.txt'
 .EXAMPLE
-   Another example of how to use this cmdlet
+   get-content c:\computers.txt | .\Get-SChannelConfig.ps1 -keys Protocols,Ciphers,Hashes,KeyExchangeAlgorithms
+
+   This example will return all SCHANNEL settings for computers in the text file 'Computers.txt'.
+
+.EXAMPLE
+    .\Get-SChannelConfig.ps1 -ComputerName Server1 -Keys ciphers
+
+    This example will get cipher settings for 'Server1'
+
+.EXAMPLE
+    .\Get-SChannelConfig.ps1 -Keys Protocols -ServerOnly
+
+    This example will get only server-side settings for only the local computer
 #>
     [CmdletBinding()]
     [Alias()]
     [OutputType([int])]
     Param
     (
-        # Param1 help description
+        # hostname of computers to query
         [Parameter(ValueFromPipeline,
                     ValueFromPipelineByPropertyName=$true,
                    Position=0)]
         [Alias('Computer')]
         $ComputerName = $env:COMPUTERNAME,
 
+        # Keys to be queried. The most commonly queried is 'Protocols', so it is set as default.
         [ValidateSet('Protocols','Ciphers','Hashes','KeyExchangeAlgorithms')]
         [string[]]$Keys = 'Protocols',
 
+        # Slims the query to Server side settings only.
         [switch]$ServerOnly
     )
 
