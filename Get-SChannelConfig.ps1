@@ -1,6 +1,6 @@
 ﻿<#
 .Synopsis
-   Short description
+   Query Local or remote 
 .DESCRIPTION
    Long description
 .EXAMPLE
@@ -28,6 +28,15 @@
 
     Begin
     {
+        $me = [Security.Principal.WindowsIdentity]::GetCurrent()
+		$admincheck = (New-Object Security.Principal.WindowsPrincipal $me).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+
+		if(!$admincheck)
+		{
+            Write-Warning ( "{0}: Please Close Powershell and run as Administrator." -f $me.Name	)
+            exit
+		}
+
         $results = New-Object System.Collections.ArrayList
         $ErrorActionPreference = 'stop'
         Function QueryReg($Comp, $key, $Reg)
@@ -159,14 +168,14 @@
     }
     End
     {
-        $results | foreach{
+        $results | ForEach-Object{
             if($_.gettype() -eq [string])
             {
                 Write-Host -ForegroundColor Red $_
             }
 
-        }
-        return $($results | where{$_.psobject.typenames -contains 'System.Management.Automation.PSCustomObject'})
+        } -ErrorAction SilentlyContinue
+        return $($results | where{$_.psobject.typenames -contains 'System.Management.Automation.PSCustomObject'} -ErrorAction SilentlyContinue)
     }
 
 
