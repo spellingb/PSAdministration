@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "696130",
+    "ThreadId": "278920",
+    "Html": "<p>Greetings!</p>\n<p>Has anyone been able to get WASP to install on Powershell 3.0?</p>\n<p>Whenever I attempt to install WASP on Powershell 3.0 (even running as Administrator with the -Force option) no logs are generated &amp; I get the following console error:</p>\n<p>\"Exception occurred while initializing the installation:<br />System.IO.FileLoadException: Could not load file or assembly 'file:///C:\\wasp\\WASP.dll' or one of its dependencies. <br />Operation is not supported. (Exception from HRESULT: 0x80131515).\"</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-11-09T13:44:44.403-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "697664",
+    "ThreadId": "278920",
+    "Html": "<p>So ... this would be a good time for me to (finally) release more officially the new UIAutomation (script) module that I've been posting on PoshCode.org -- <a href=\"http://poshcode.org/2483\">you can get it there for now</a>, I'll do some testing and cleanup before I release it here.</p>",
+    "PostedDate": "2011-11-13T20:42:02.03-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

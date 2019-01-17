@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed in January 20 Release :)",
+    "ClosedDate": "2009-01-19T21:18:07.94-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I want to automate dismissal of error dialogs. You can't bring these up with select-window and have to use select-control instead. However, these objects can't be piped into get-windowposition.",
+    "LastUpdatedDate": "2013-05-16T04:01:20.97-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "WASP",
+    "ReportedDate": "2008-11-17T14:20:48.007-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "select-control outputs cannot be piped into get-windowposition",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 3395
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

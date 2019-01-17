@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "675069",
+    "ThreadId": "273416",
+    "Html": "\r\n<p>I haven't been able find this out on any searches how to select a tabbed window. The only class is&nbsp;SysTabControl32. How do I manipulate this to the correct tabbed window without using send-click or send-keys? Thanks</p>\r\n",
+    "PostedDate": "2011-09-21T21:53:10.257-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

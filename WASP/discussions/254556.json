@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "600022",
+    "ThreadId": "254556",
+    "Html": "\r\n<p>Hi, I just wanted to start out by saying that I have been doing windows automation for quite some time and I really appreciate finding your Snapin.</p>\r\n<p>I am trying to figure out what the problem is with this code.</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>Select<span style=\"color:gray\">-</span>Window chrome | Send<span style=\"color:gray\">-</span>Click <span style=\"color:gray\">-</span>button left <span style=\"color:gray\">-</span>x 150 <span style=\"color:gray\">-</span>y 45\r\n</pre>\r\n</div>\r\n<p>When I do the above in a powershell window, the chrome window gets activated and nothing happens.&nbsp; What should happen is there should be a single click in the address bar but there's not.</p>\r\n<p>If I do the following code, chrome closes out as it should:</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>Select<span style=\"color:gray\">-</span>Window chrome | Send<span style=\"color:gray\">-</span>Click <span style=\"color:gray\">-</span>button left <span style=\"color:gray\">-</span>x 10 <span style=\"color:gray\">-</span>y 10 <span style=\"color:gray\">-</span>Double\r\n</pre>\r\n</div>\r\n<p>Why does the first line of code not work and the second line of code works perfectly?&nbsp; (<em>I want to state that I am not trying to get the mouse to actually click in the address bar for me, i have a java button on another page that is in the same place\r\n every time and it kicks off a sequence of events that i will have to interact with but this is just one step in the process... phew</em>.)</p>\r\n",
+    "PostedDate": "2011-04-19T14:31:37.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679544",
+    "ThreadId": "254556",
+    "Html": "<p>I've had the same issue. I can't seem to get the Send-Click command to work at all though.</p>\r\n<p>zhollett, did you happen to come to a solution for this?</p>",
+    "PostedDate": "2011-10-03T16:15:04.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679626",
+    "ThreadId": "254556",
+    "Html": "<p>Usually when that happens it's because of how we're sending the click.&nbsp; If you want to click the address bar, you have to actually find the address bar and click that (instead of sending the click to the top level window).</p>\r\n<p>You're going to want to pipe your Select-Window chrome through Select-Control (or Select-Control -recurse) until you get the address bar and then send-click to that (I'd figure out the exact incantation of Select-Control for you, but I don't have Chrome).</p>\r\n<p>As a side note, my preference for stuff like that is to use send-keys ...</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-10-03T21:49:19.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

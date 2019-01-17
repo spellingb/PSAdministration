@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1245850",
+    "ThreadId": "545474",
+    "Html": "Ok, I have been working on this and I am looking for ideas.  I have a series of programs that I have launched and minimized and want to script the closing of these with WASP because when they are launched there are key presses to start and when they are closed there are key presses to ensure that they close.  However since WASP can only effect windows that are either open or up and in the background I am looking for a way to just send a command or something to the minimized window to get it back where I can manipulate it.\r<br />\n<br />\nI tried \r<br />\nSelect-Window explorer | Set-WindowActive | Send-Keys '%{TAB}'\r<br />\nWith mixed results, some times it brings up some of the windows, others it does nothing.<br />\nSince there is no windows key or space bar key press shortcuts for WASP it makes it a little bit more difficult.\r<br />\n<br />\nI saw reading through the discussions that there was a way to access the system tray, is there a similar way to access the taskbar?<br />\n",
+    "PostedDate": "2014-05-15T11:51:34.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1245933",
+    "ThreadId": "545474",
+    "Html": "You'll have to use the script version, and the best approach depends on your version of Windows\r<br />\n<br />\nIt's <a href=\"https://chocolatey.org/packages/wasp\" rel=\"nofollow\">on chocolatey</a> so if you haven't got it, you can install it with <a href=\"http://github.com/PoshCode/PoshCode\" rel=\"nofollow\">PoshCode</a>'s <code>Install-Module WASP</code> or if you don't have PoshCode installed yet, you can install that and WASP at the same time using:<br />\n<pre><code>Start-Service WebClient # to start the webDAV client\n\\\\PoshCode.org\\Modules\\Install WASP</code></pre>\n\nI think what you need is just <code>Invoke-Window.SetWindowVisualState</code> \r<br />\nyou should be able to bring any task to to &quot;Normal&quot; and then set focus with:<br />\n<pre><code>Select-UIElement -class icoGoogle | Invoke-Window.SetWindowVisualState -state Normal -Passthru | Set-UIFocus</code></pre>\n\nHaving said that, with the latest versions of WASP I added the Add-Input and Send-Input commands which are ... well ... awesome ;)\r<br />\n<br />\nFor instance, you can send WIN+T to basically tab through the buttons on the taskbar, or, if you have pinned the apps and can be sure of their order on the taskbar, you can use WIN and a number key to invoke them:<br />\n<pre><code>add-input -keypress VK_T -Modifiers LWIN | \nadd-input -keypress VK_T -Modifiers LWIN | \nadd-input -keypress VK_T -Modifiers LWIN | Send-Input</code></pre>\n\nOr<br />\n<pre><code>add-input -keypress VK_4 -Modifiers LWIN | Send-Input</code></pre>\n\n",
+    "PostedDate": "2014-05-15T15:14:54.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1247110",
+    "ThreadId": "545474",
+    "Html": "Ok, so I couldnt get this done.  I went to chocolatey and managed to download wasp.2.5.0.1.nupkg, and I am not sure how to install it.  I tried your Start-Service WebClient line and all I ever see from that is down in the ISE that Intellisense is closing or that it timed out. Not sure how to add the \\poshcode.org\\modules\\install WASP as a argument to that... \r<br />\n<br />\nI went to posh code and tried to execute this command to install\r<br />\n iwr <a href=\"http://PoshCode.org/i\" rel=\"nofollow\">http://PoshCode.org/i</a> -OutF PC.ps1; .\\PC; rm .\\PC.ps1\r<br />\nand got an error that Import-AtomFeed is not recognized as the name of a cmdlet, function, script file, or operable program.\r<br />\n<br />\nSo how do I get there from here?<br />\n",
+    "PostedDate": "2014-05-19T12:04:54.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1247123",
+    "ThreadId": "545474",
+    "Html": "Ok got chocolatey installed ran cinst WASP but still could not get any of the new elements to work\r<br />\n<br />\ndo I need to point chocolatey at wasp.2.5.01.nupkg to install?<br />\n",
+    "PostedDate": "2014-05-19T12:23:37.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1247233",
+    "ThreadId": "545474",
+    "Html": "Heh. <a href=\"file://PoshCode.org/Modules\" rel=\"nofollow\">\\\\PoshCode.org\\Modules</a> is a WebDAV server ... so that's not an argument, it's a command. There's a script &quot;Install.ps1&quot; in that folder, you can open up the folder in explorer to see it, <strong><em>and then</em></strong> just run it from PowerShell <code>\\\\PoshCode.org\\Modules\\Install.ps1</code><br />\n<br />\nOf course, I don't know <em>what</em> that error about AtomFeed is.  The &quot;<a href=\"http://PoshCode.org/i\" rel=\"nofollow\">http://PoshCode.org/i</a>&quot; link is just a web shortcut to that Install.ps1 script, so I can't imagine how you could download it and run it and yet not have the command, which is defined in that file ;-)<br />\n<br />\nAnyway, if you used Chocolatey instead of PoshCode, you probably ended up unzipping the package in C:\\Chocolatey\\lib\\wasp.2.5.0.0\\ instead of in your PSModulePath ... You'll want to: <br />\n<pre><code>copy-item C:\\Chocolatey\\lib\\wasp.2.5.0.0\\*  ~\\Documents\\WindowsPowerShell\\Modules\\WASP -Recurse</code></pre>\n\n",
+    "PostedDate": "2014-05-19T19:11:37.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

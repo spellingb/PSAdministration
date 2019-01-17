@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "942169",
+    "ThreadId": "403351",
+    "Html": "\r\n<p>Hi Everyone,<br>\r\nI am currently trying to automate a login via IE. &nbsp;Here is a link to the webpage: https://fiaegus.markit.com/egus/auth/login.jsp<br>\r\nLogin button is stored as a image and doesn't have element id or tag name I can use to identify the button. So I tried to use the Select-Title and then Send Keys approach but nothing happens. &nbsp;Has anyone encountered a similar issue? If so, any suggestions\r\n would be appreciated. I'm just spinning my wheels at this point :) </p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:orangered\">$username</span> <span style=\"color:gray\">=</span> <span style=\"color:#a31515\">'username'</span>                                                                                                      \n<span style=\"color:orangered\">$password</span> <span style=\"color:gray\">=</span> <span style=\"color:#a31515\">'password'</span>\n\n<span style=\"color:orangered\">$IEProcess</span> <span style=\"color:gray\">=</span> Select<span style=\"color:gray\">-</span>Window <span style=\"color:gray\">-</span>Title <span style=\"color:#a31515\">&quot;FIA Electronic Give-Up System Login*&quot;</span> \n\n<span style=\"color:green\"># Create the IE com object                                                                                            </span>\n <span style=\"color:orangered\">$ie</span> <span style=\"color:gray\">=</span> new<span style=\"color:gray\">-</span>object <span style=\"color:gray\">-</span>com InternetExplorer.Application <span style=\"color:orangered\">$ie</span>.navigate(<span style=\"color:#a31515\">&quot;https://fiaegus.markit.com/&quot;</span>)                               \n<span style=\"color:blue\">do</span> {sleep 1} <span style=\"color:blue\">until</span> (<span style=\"color:gray\">-not</span> (<span style=\"color:orangered\">$ie</span>.Busy))                                                                        \n<span style=\"color:orangered\">$ie</span>.visible <span style=\"color:gray\">=</span> <span style=\"color:orangered\">$true</span>\n<span style=\"color:orangered\">$usernameField</span> <span style=\"color:gray\">=</span> <span style=\"color:orangered\">$doc</span>.getElementById(<span style=\"color:#a31515\">'username'</span>)                                \n<span style=\"color:orangered\">$usernameField</span>.value <span style=\"color:gray\">=</span> <span style=\"color:orangered\">$username</span>                                                                                                 \n<span style=\"color:orangered\">$passwordField</span> <span style=\"color:gray\">=</span> <span style=\"color:orangered\">$doc</span>.getElementById(<span style=\"color:#a31515\">'password'</span>)                                                                       \n<span style=\"color:orangered\">$passwordField</span>.value <span style=\"color:gray\">=</span> <span style=\"color:orangered\">$password</span> \n<span style=\"color:orangered\">$IEProcess</span> | Send<span style=\"color:gray\">-</span>Keys <span style=\"color:#a31515\">&quot;{Enter}&quot;</span>\n</pre>\r\n</div>\r\n<p></p>\r\n",
+    "PostedDate": "2012-11-15T08:04:44.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "942309",
+    "ThreadId": "403351",
+    "Html": "\r\n<p>My suggestion with automating browsers is always to use Selenium's WebDriver ( http://huddledmasses.org/did-you-know-powershell-can-use-selenium/ ) or WaTiN ( http://huddledmasses.org/using-powershell-and-watin-powerwatin/ ) but in this case, you should\r\n be able to:</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre><span style=\"color:orangered\">$doc</span>.getElementById(<span style=\"color:#a31515\">'loginForm'</span>).submit()\n</pre>\r\n</div>\r\n<p></p>\r\n",
+    "PostedDate": "2012-11-15T12:54:21.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "943066",
+    "ThreadId": "403351",
+    "Html": "\r\n<p>Selecting the elementID worked, I thought I tried this before..I must have had a flaw in my syntax. I will look into you other automation options you suggested as well. &nbsp;Thanks for your help.&nbsp;</p>\r\n",
+    "PostedDate": "2012-11-16T14:57:03.637-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

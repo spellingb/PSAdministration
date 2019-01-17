@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "662006",
+    "ThreadId": "270063",
+    "Html": "\r\n<p>I am trying to use Invoke-Command of powershell and execute the WASP commands on a remote machine.</p>\r\n<p>No luck till now... The WASP commands fantastically on a local machine..</p>\r\n<p>Anyone had luck in executing them remotely?</p>\r\n",
+    "PostedDate": "2011-08-23T03:58:40.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

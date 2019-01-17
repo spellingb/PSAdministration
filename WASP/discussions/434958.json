@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "1008562",
+    "ThreadId": "434958",
+    "Html": "HI all\r<br />\n<br />\nI am trying to use WASP to manipulate a drop down list box. I am able to navigate to the control which reports its class as a <strong>ComboBox</strong>. However I am unable to manipulate the control in any way. The available memebers are:<br />\n<pre><code>PS G:\\&gt; $db_combo | Get-Member\n\n\n   TypeName: Huddled.Wasp.Control\n\nName             MemberType Definition\n----             ---------- ----------\nActivate         Method     System.Void Activate()\nClose            Method     System.Void Close()\nEquals           Method     bool Equals(System.Object obj), bool Equals(Huddled.Wasp.WindowHandle wnd)\nGetChildren      Method     System.Collections.Generic.List[Huddled.Wasp.WindowHandle] GetChildren()\nGetClassName     Method     string GetClassName()\nGetHashCode      Method     int GetHashCode()\nGetIsActive      Method     bool GetIsActive()\nGetIsMaximized   Method     bool GetIsMaximized()\nGetIsMinimized   Method     bool GetIsMinimized()\nGetMainWindow    Method     Huddled.Wasp.Window GetMainWindow()\nGetParent        Method     System.IntPtr GetParent()\nGetParentOrOwner Method     System.IntPtr GetParentOrOwner()\nGetPosition      Method     System.Drawing.Rectangle GetPosition()\nGetProcessId     Method     int GetProcessId()\nGetType          Method     type GetType()\nGetWindowText    Method     string GetWindowText()\nIsAppWindow      Method     bool IsAppWindow(), bool IsAppWindow(bool includeToolWindows)\nMaximize         Method     System.Void Maximize()\nMinimize         Method     System.Void Minimize()\nPointToScreen    Method     System.Drawing.Point PointToScreen(System.Drawing.Point origin), System.Drawing.Point PointToScreen(int X, int Y)\nRestore          Method     System.Void Restore()\nSetPosition      Method     System.Void SetPosition(System.Drawing.Rectangle value), System.Void SetPosition(int x, int y, int width, int height)\nSetSize          Method     System.Void SetSize(int width, int height)\nToString         Method     string ToString()\nClass            Property   System.String Class {get;}\nHandle           Property   System.IntPtr Handle {get;set;}\nTitle            Property   System.String Title {get;}\n</code></pre>\n\nHow do I find out what items populate the drop down list and how to select one of them?<br />\n",
+    "PostedDate": "2013-02-28T16:57:17.013-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1008626",
+    "ThreadId": "434958",
+    "Html": "I am not sure -- you should be able to either check the Title property or call .GetWindowText,() on it to see the current value. I can't remember a way to get a list using the Win32 APIs right now other than that, and using SendKeys (up/down, or just type the name you want). to cycle through them.\r<br />\n<br />\nWith the <a href=\"http://poshcode.org/3931\" rel=\"nofollow\">WASP2 module that I've been working</a> on you can access it using UIAutomation which will get you the list, and let you specify the one you want ... I guess I really should put that code on this page as a beta so people can use it .. I'm just frustrated because it's hard to make it &quot;powershelly&quot; \r<br />\n<br />\nAnyway, just as an example, on the PuTTY Configuration Window, I can set the Parity like so:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:OrangeRed;\">$Combo</span> <span style=\"color:Gray;\">=</span> Select<span style=\"color:Gray;\">-</span>UIElement <span style=\"color:Gray;\">-</span>Process Putty | Select<span style=\"color:Gray;\">-</span>UIElement Parity <span style=\"color:Gray;\">-</span>Type ComboBox \n\n<span style=\"color:Green;\"># List out the items (because I was scripting interactively)</span>\n<span style=\"color:OrangeRed;\">$Combo</span> | Select<span style=\"color:Gray;\">-</span>UIElement <span style=\"color:Gray;\">-</span>Type ListItem  <span style=\"color:Gray;\">-</span>Recurse <span style=\"color:Green;\"># | Select-Object -Expand Name</span>\n\n<span style=\"color:Green;\"># Now pick one of them and select it:</span>\n<span style=\"color:OrangeRed;\">$Combo</span> | Select<span style=\"color:Gray;\">-</span>UIElement <span style=\"color:#A31515;\">&quot;Even&quot;</span> <span style=\"color:Gray;\">-</span>Type ListItem  <span style=\"color:Gray;\">-</span>Recurse | Invoke<span style=\"color:Gray;\">-</span>SelectionItem.Select\r\n</pre></div>Incidentally, you see there part my problem with this vs. the current WASP: that whole &quot;Invoke-SelectionItem.Select&quot; thing is awkward...<br />\n",
+    "PostedDate": "2013-02-28T22:55:15.14-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1010954",
+    "ThreadId": "434958",
+    "Html": "I've tried using SendKeys but it does not seem to work reliably. It might be to do with the fact that I am trying to automate a <a href=\"http://en.wikipedia.org/wiki/Uniface_(programming_language)\" rel=\"nofollow\">Uniface</a> GUI and it is behaving in a none standard way. Though WASP does correctly identify the elements in the GUI which gave me some hope initially.<br />\n<br />\nHow can I try your new WASP2 code? Can you point me to some setup instructions.<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2013-03-05T20:30:16.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030051",
+    "ThreadId": "434958",
+    "Html": "I just started using the WASP2 project recently...this is how i set it up:<br />\n<ol>\n<li>Download the UI Automation as well as the Reflection and Autoload modules</li>\n<li>\nRename the files as:<br />\n</li>\n</ol>\nAutoload.psm1&quot;\r<br />\nReflection.psm1&quot;\r<br />\nUIAutomation.psm1&quot;\r<br />\n<br />\n(I removed the file version numbers from the example so that these instructions don't become out of date with the next release of any module)\r<br />\n<br />\nLoad the modules with the commands:<br />\n<pre><code>Import-Module .\\Autoload.psm1\nImport-Module .\\Reflection.psm1\nImport-Module .\\UIAutomation.psm1</code></pre>\n\nI hope this helps.\r<br />\n<br />\n-Scott<br />\n",
+    "PostedDate": "2013-04-13T12:09:25.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030121",
+    "ThreadId": "434958",
+    "Html": "Yeah, I'm working on a packaging module that will resolve dependencies so that I can distribute it easier :)<br />\n",
+    "PostedDate": "2013-04-13T19:04:19.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

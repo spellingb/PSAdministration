@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1277458",
+    "ThreadId": "554052",
+    "Html": "Hello,\r<br />\n<br />\nI've been looking around for a way to control the placement of the Windows On-Screen Keyboard via script. After a lot of searching (and a lot of failed VBScripts) I came across this tool.\r<br />\n<br />\nThe only problem is, Set-WindowPosition doesn't seem to work with the OSK window.\r<br />\n<br />\nIn other words, the following command works:<br />\n<pre><code>select-window notepad | select -first 1 | set-windowposition -x 600 -y 200</code></pre>\n\nBut this one does not:<br />\n<pre><code>select-window osk | select -first 1 | set-windowposition -x 600 -y 200</code></pre>\n\nIt does, however, pull up the OSK if it had been minimized, which I guess is nice (it cuts out a step in the script).\r<br />\n<br />\nIn addition, I can close the window just fine using:<br />\n<pre><code>select-window osk | select -first 1 | remove-window</code></pre>\n\nCan anyone tell if I'm doing something wrong or if I want is even possible?<br />\n",
+    "PostedDate": "2014-07-24T12:38:41.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1278254",
+    "ThreadId": "554052",
+    "Html": "That window is special, you have to be elevated to move it. If you try it with the new WASP module that's on PoshCode/Chocolatey/PowerShellGet you'll actually get an access denied error:<br />\n<pre><code>C:\\PS&gt; Select-UIElement -ProcessName osk | Invoke-Transform.Move -x 200 -y 300\nException calling &quot;Move&quot; with &quot;2&quot; argument(s): &quot;Access is denied&quot;</code></pre>\n\nBut it will work from an elevated window.<br />\n",
+    "PostedDate": "2014-07-27T20:58:17.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1284378",
+    "ThreadId": "554052",
+    "Html": "Awesome, thanks! I hadn't thought that you'd need elevation to move a window but not to close it.<br />\n",
+    "PostedDate": "2014-08-03T20:06:33.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

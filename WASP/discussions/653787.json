@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1470745",
+    "ThreadId": "653787",
+    "Html": "I am installing some component which throws security pop with &quot;Install&quot; and &quot;Don't Install&quot; option. Now i am able to get hold off that windows however i am not able to click on install and don't install option. Kindly help me with this. I have tried following commands till now\r<br />\n<br />\nSelect-Window -title &quot;Windows Security&quot; | Set-WindowActive | Send-Keys &quot;%n&quot;\r<br />\n<br />\nSelect-Window -title &quot;Windows Security | Set_WindowActive | Select-Control -title &quot;Do&amp;n't I&amp;nstall&quot; | Send-Keys &quot;%n&quot;\r<br />\n<br />\nSelect-Window -title &quot;Windows Security | Set_WindowActive | Select-Control -title &quot;Do&amp;n't I&amp;nstall&quot; -recurse | Send-Click<br />\n",
+    "PostedDate": "2016-04-20T03:55:32.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1470958",
+    "ThreadId": "653787",
+    "Html": "If the prompt is a security prompt on the other side of UAC, you need to be running PowerShell elevated (&quot;As Administrator&quot;) in order to send keys or clicks to that prompt.<br />\n",
+    "PostedDate": "2016-04-21T10:40:07.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1470995",
+    "ThreadId": "653787",
+    "Html": "Thanks. I figured that this also depends on the version of Windows we are using. I am trying on Windows 2012 which has different GUI than Windows 2008. So the above commands are working on Windows 2008 however on 2K12 they are not able to recognize the button on prompt. <br />\n<br />\nAlso UAC is turned off and I am running PowerShell as Administrator.  Summary of windows controls are like this.<br />\n<blockquote>\n<blockquote>\n<blockquote>\n<blockquote>\nWindow &lt;&lt;&lt;&lt;<br />\nTitle:\tWindows Security<br />\nClass:\t#32770<br />\nPosition:\t701, 189<br />\nSize:\t556, 250<br />\nStyle:\t0x96C80284<br />\nExStyle:\t0x00010109<br />\nHandle:\t0x0000000000010248<br />\n<br />\nControl &lt;&lt;&lt;&lt;<br />\nClass:\tDirectUIHWND<br />\nInstance:\t1<br />\nClassnameNN:\tDirectUIHWND1<br />\nName:\t<br />\nAdvanced (Class):\t[CLASS:DirectUIHWND; INSTANCE:1]<br />\nID:\t<br />\nText:\t<br />\nPosition:\t0, 0<br />\nSize:\t540, 211<br />\nControlClick Coords:\t42, 12<br />\nStyle:\t0x56000000<br />\nExStyle:\t0x00000000<br />\nHandle:\t0x000000000001024A<br />\n<br />\nMouse &lt;&lt;&lt;&lt;<br />\nPosition:\t751, 232<br />\nCursor ID:\t0<br />\nColor:\t0xFFFFFF<br />\n<br />\nVisible Text &lt;&lt;&lt;&lt;<br />\n&amp;Install<br />\nDo&amp;n't Install<br />\nYou should only install driver software from publishers you trust.  How can I decide which device software is safe to install?<br />\n</blockquote>\n</blockquote>\n</blockquote>\n</blockquote>\nLet me know if you have some suggestion on this.<br />\n",
+    "PostedDate": "2016-04-21T21:52:13.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

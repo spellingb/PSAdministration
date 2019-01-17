@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "674255",
+    "ThreadId": "273211",
+    "Html": "\r\n<p>We have a simple csharp windows application that we are trying to call within powershell.&nbsp; We are currently using WASP to set a couple text controls and tab to a start button to run the windows app.</p>\r\n<p>However we are just blindly setting text and tabbing a couple times to get to the next text box and blindly setting the text and tabbing a couple times to&nbsp;the start button and hitting enter.</p>\r\n<p>I would like to be able to explicitly get the controls by using the title.&nbsp; I was able to figure this out for the start button since the title was &quot;Start&quot; however for the three EDIT controls, they do not have a title, they are all blank.</p>\r\n<p>And it appears I can only get Title, Class and Handle properties of the controls using the GetChildren.</p>\r\n<p>So is there something I can set in the csharp windows application to expose other properties or is there something else in powershell I can use to expose the textbox name?</p>\r\n<p>Note, when I put in bogus value in the text property in csharp, that was returned as the title in powershell, however I do not want to rely on setting text field in my windows app, I would like to use the given Name property of the text control in powershell.</p>\r\n",
+    "PostedDate": "2011-09-20T09:20:41.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

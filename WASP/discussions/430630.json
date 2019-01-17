@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "991149",
+    "ThreadId": "430630",
+    "Html": "\r\n<p>I'm trying to use WASP on Windows 8.</p>\r\n<p>From an elevated PS prompt (of course) I run 'install.ps1 -force'.</p>\r\n<p>I get:</p>\r\n<p>--------8&lt;-----------</p>\r\n<p>You're running PowerShell 3.0, so you don't need to Install this as a PSSnapin, you can use Import-Module (or Add-Module<br>\r\n&nbsp;in CTP2) to load it.&nbsp; If you still want to install it as a PSSnapin, re-run this script with -Force<br>\r\nMicrosoft (R) .NET Framework Installation utility Version 4.0.30319.17929<br>\r\nCopyright (C) Microsoft Corporation.&nbsp; All rights reserved.</p>\r\n<p><br>\r\nRunning a transacted installation.</p>\r\n<p>Beginning the Install phase of the installation.<br>\r\nSee the contents of the log file for the D:\\tmp\\wasp\\WASP.dll assembly's progress.<br>\r\nThe file is located at D:\\tmp\\wasp\\WASP.InstallLog.<br>\r\nInstalling assembly 'D:\\tmp\\wasp\\WASP.dll'.<br>\r\nAffected parameters are:<br>\r\n&nbsp;&nbsp;&nbsp; =<br>\r\n&nbsp;&nbsp; logfile = D:\\tmp\\wasp\\WASP.InstallLog<br>\r\n&nbsp;&nbsp; assemblypath = D:\\tmp\\wasp\\WASP.dll<br>\r\n&nbsp;&nbsp; logtoconsole =</p>\r\n<p>The Install phase completed successfully, and the Commit phase is beginning.<br>\r\nSee the contents of the log file for the D:\\tmp\\wasp\\WASP.dll assembly's progress.<br>\r\nThe file is located at D:\\tmp\\wasp\\WASP.InstallLog.<br>\r\nCommitting assembly 'D:\\tmp\\wasp\\WASP.dll'.<br>\r\nAffected parameters are:<br>\r\n&nbsp;&nbsp;&nbsp; =<br>\r\n&nbsp;&nbsp; logfile = D:\\tmp\\wasp\\WASP.InstallLog<br>\r\n&nbsp;&nbsp; assemblypath = D:\\tmp\\wasp\\WASP.dll<br>\r\n&nbsp;&nbsp; logtoconsole =</p>\r\n<p>The Commit phase completed successfully.</p>\r\n<p>The transacted install has completed.<br>\r\nAdd-PSSnapin : An item with the same key has already been added.<br>\r\nAt D:\\tmp\\wasp\\Install.ps1:16 char:1<br>\r\n&#43; Add-PSSnapin WASP<br>\r\n&#43; ~~~~~~~~~~~~~~~~~<br>\r\n&nbsp;&nbsp;&nbsp; &#43; CategoryInfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : NotSpecified: (:) [Add-PSSnapin], ArgumentException<br>\r\n&nbsp;&nbsp;&nbsp; &#43; FullyQualifiedErrorId : System.ArgumentException,Microsoft.PowerShell.Commands.AddPSSnapinCommand</p>\r\n<p>To load the Windows Automation Snapin in the future, you need to run:<br>\r\nAdd-PSSnapin WASP</p>\r\n<p>You can also add that line to your Profile script to load it automatically.</p>\r\n<p>--------8&lt;----------</p>\r\n<p>After that the key HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\PowerShell\\1\\PowerShellSnapIns\\WASP does exist, but no commands are available:</p>\r\n<p>PS D:\\tmp\\wasp&gt; select-window<br>\r\nselect-window : The term 'select-window' is not recognized as the name of a cmdlet, function, script file, or operable<br>\r\nprogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.<br>\r\nAt line:1 char:1<br>\r\n&#43; select-window<br>\r\n&#43; ~~~~~~~~~~~~~<br>\r\n&nbsp;&nbsp;&nbsp; &#43; CategoryInfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : ObjectNotFound: (select-window:String) [], CommandNotFoundException<br>\r\n&nbsp;&nbsp;&nbsp; &#43; FullyQualifiedErrorId : CommandNotFoundException</p>\r\n<p>--------8&lt;----------</p>\r\n<p>Any clue?</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-23T12:25:11.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991306",
+    "ThreadId": "430630",
+    "Html": "\r\n<p>Well, it really wasn't kidding when it said you should use Import-Module instead on PowerShell 3 -- it's much more flexible: you can specify the dll by path, or put it in a &quot;Wasp&quot; folder in your Documents\\WindowsPowerShell\\Modules\\&nbsp; folder, or any other\r\n folder that's in your $ENV:PSModulePath</p>\r\n<p>I don't quite understand what's going on with the Add-PSSnapin failure saying &quot;An item with the same key has already been added&quot;&nbsp; ... can you run &quot;Get-PSSnapin&quot; and see if it shows up? I mean, in a new PowerShell instance, you should be able to run:</p>\r\n<p>Add-PSSnapin WASP</p>\r\n<p>Get-PSSnapin # You should see WASP listed</p>\r\n<p>You might also check <strong>Get-Command -Module WASP</strong> which should show all the commands if the snapin has been added (or if you have it set up as a module).</p>\r\n",
+    "PostedDate": "2013-01-23T19:00:36.937-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991355",
+    "ThreadId": "430630",
+    "Html": "\r\n<p>Neither Get-PSSnapin nor Get-Command -Module WASP reports it.</p>\r\n<p>In a PS2 host (powershell -version 2.0) Import-Module does work and makes the commands available.</p>\r\n<p>In a PS3 host Import-Module seems to work (no message) but the commands are not available.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2013-01-23T22:13:01.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "991365",
+    "ThreadId": "430630",
+    "Html": "\r\n<p>Well, wasp.dll is working for me as a module in PS3 with this wasp.psd1 file next to it:</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>@{\nPowerShellVersion<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;2.0&quot;</span>\nAuthor<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;Joel Bennett&quot;</span>\nCmdletsToExport<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;*&quot;</span>\nCompanyName<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;http://HuddledMasses.org&quot;</span>\nCopyright<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;&copy; 2008-2010, Joel Bennett, released under the Ms-PL&quot;</span>\nDescription<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;A Windows Automation Snapin for Powershell&quot;</span>\nCLRVersion<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;2.0&quot;</span>\nFileList<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;Wasp.dll&quot;</span>,<span style=\"color:#a31515\">&quot;Wasp.psd1&quot;</span>\nRequiredModules<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;Reflection&quot;</span>\nModuleToProcess<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;Wasp.dll&quot;</span>\nGUID<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;4f6fd93e-42b7-4548-b522-3ad6759aa62a&quot;</span>\nModuleVersion<span style=\"color:gray\">=</span><span style=\"color:#a31515\">&quot;1.3.0.2&quot;</span>\n}\n</pre>\r\n</div>\r\n<p>I doubt you need that psd1, it should just work. I actually put mine in a folder\r\n<strong>C:\\Users\\Joel\\Documents\\WindowsPowershell\\Modules\\WASP1</strong> and rename the file to\r\n<strong>WASP1.dll</strong> and <strong>WASP1.psd1</strong> (and edit the FileList and ModuleToProcess in the psd1 file) because I'm working on WASP 2 which I want to load as &quot;WASP&quot;</p>\r\n<p>But in any case, it's definitely working to just Import-Module WASP1; Get-Command -Module WASP1</p>\r\n",
+    "PostedDate": "2013-01-23T22:36:03.227-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1340531",
+    "ThreadId": "430630",
+    "Html": "If you put the WASP.dll on a UNC share then security might be blocking you. \r<br />\nI had the same issue. Import-Module appeared to work but I couldn't see any modules. \r<br />\nOnce I moved it to the local path everything was good.<br />\n",
+    "PostedDate": "2015-01-09T14:44:26.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

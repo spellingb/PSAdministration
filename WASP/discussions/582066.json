@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "1356506",
+    "ThreadId": "582066",
+    "Html": "The file save pop up has no title on IE11/Windows 8.1. How can I select the Save or Cancel button? I tried sending %S but sometimes it grabs the IE Safety menu. I need something like:\r<br />\n<br />\nSelect-Window iexplore | Select-Control -Class &quot;Frame Notification Bar&quot; | Set-WindowActive | Send-Keys &quot;%S&quot;\r<br />\n<br />\nbut more precisely targeted to the dialog box.\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2015-02-27T13:20:42.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1356680",
+    "ThreadId": "582066",
+    "Html": "I'm a lot confused. Are you using the universal app version of explorer? Otherwise the file save should be a regular dialog box ...\r<br />\n<br />\nSelect-Window iExplore | Select-ChildWindow | Set-WindowActive | Send-Keys &quot;%S&quot; <br />\n",
+    "PostedDate": "2015-02-27T21:36:16.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1361865",
+    "ThreadId": "582066",
+    "Html": "Hi,<br />\n<br />\nIt's not a standard file dialog in IE11 in Windows 8.1; I have also tried your example code and it does not work. It's some kind of hybrid window with no title. The Alt-S will open the Safety menu if it does anything at all.<br />\n<br />\n<img src=\"http://fud.community.services.support.microsoft.com/Fud/FileDownloadHandler.ashx?fid=ec36d69d-ffad-4b42-9db0-7b1d400daabc\" alt=\"Image\" /><br />\n",
+    "PostedDate": "2015-03-09T13:42:07.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1361955",
+    "ThreadId": "582066",
+    "Html": "Oh ... that thing. \r<br />\n<br />\nI wonder what makes that come up some times but not others? That is a DirectUIHWND, it's basically invisible, as far as I can tell.\r<br />\nYou can use Send-Keys though, just have to target that hwnd:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\nSelect<span style=\"color:Gray;\">-</span>UIElement <span style=\"color:Gray;\">-</span>ProcessName iexplore |               <span style=\"color:Green;\"># Get IE</span>\nSelect<span style=\"color:Gray;\">-</span>UIElement <span style=\"color:Gray;\">-</span>Class <span style=\"color:#A31515;\">&quot;Frame Notification Bar&quot;</span> |     <span style=\"color:Green;\"># Find the notification bar</span>\nSelect<span style=\"color:Gray;\">-</span>UIElement <span style=\"color:Gray;\">-</span>class <span style=\"color:#A31515;\">&quot;DirectUIHwnd&quot;</span> |               <span style=\"color:Green;\"># And the invisible window</span>\nSend<span style=\"color:Gray;\">-</span>Keys <span style=\"color:#A31515;\">&quot;%S&quot;</span> <span style=\"color:Gray;\">-</span>WindowHandle { <span style=\"color:OrangeRed;\">$_</span>.NativeWindowHandle } <span style=\"color:Green;\"># Send-Keys doesn&#39;t have an alias &quot;NativeWindowHandle&quot; on  WindowHandle</span>\r\n</pre></div>You could also use right-click &quot;save as&quot; in the previous step of your automation to force the other dialog.<br />\n",
+    "PostedDate": "2015-03-09T14:42:29.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1361967",
+    "ThreadId": "582066",
+    "Html": "Thanks, I will try this. Unfortunately can't even do a right click as the download link is a JavaScript pop up menu<br />\n",
+    "PostedDate": "2015-03-09T15:02:35.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1362273",
+    "ThreadId": "582066",
+    "Html": "Hi,\r<br />\nPlease bear with me as I am not a PowerShell guru. It looks like <em>Select-UIElement</em> is part of a newer version from poshcode. I can't for the life of me get it to work and there seems to be no link from the download page on this site or install instructions for the three necessary modules. Can you help? \r<br />\nThanks<br />\n",
+    "PostedDate": "2015-03-10T11:21:03.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1362308",
+    "ThreadId": "582066",
+    "Html": "Oh my gosh. That explains why I had to do the crappy -WindowHandle mapping, I was mixing and matching cmdlets from two different modules. LOL. I swear when I was writing that example yesterday I wanted to call the me that wrote Send-Keys an idiot for missing the &quot;NativeWindowHandle&quot; alias ;-)<br />\n<br />\nJust use the old commands:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\nSelect<span style=\"color:Gray;\">-</span>Window iexplore |\nSelect<span style=\"color:Gray;\">-</span>Control <span style=\"color:Gray;\">-</span>Class <span style=\"color:#A31515;\">&quot;Frame Notification Bar&quot;</span> |\nSelect<span style=\"color:Gray;\">-</span>Control <span style=\"color:Gray;\">-</span>class DirectUIHwnd | \nSend<span style=\"color:Gray;\">-</span>Keys <span style=\"color:#A31515;\">&quot;%S&quot;</span>   <span style=\"color:Green;\"># magically picks up the window handle, as it should! duh!</span>\r\n</pre></div>Hopefully that works for you, sorry about that.<br />\n",
+    "PostedDate": "2015-03-10T13:27:54.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1362336",
+    "ThreadId": "582066",
+    "Html": "Thanks! Finally got this to work. The Alt-S will still randomly select the <em>Safety</em> menu if it is there so I worked around it by temporarily turning off the toolbar with:\r<br />\n<br />\n <code>$ie.ToolBar = $false</code>\r<br />\n<br />\nThere's quite a few unanswered questions around on this. Hopefully this thread will now show up in searches.<br />\n",
+    "PostedDate": "2015-03-10T15:09:38.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481908",
+    "ThreadId": "582066",
+    "Html": "How would you close this DirectUIHWND window with Send-Keys?<br />\n",
+    "PostedDate": "2016-08-23T08:24:52.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1481953",
+    "ThreadId": "582066",
+    "Html": "<strong>maskull wrote:</strong><br />\n<blockquote>\nHow would you close this DirectUIHWND window with Send-Keys?<br />\n</blockquote>\nTry opening a new question with a little bit more information?<br />\n",
+    "PostedDate": "2016-08-23T21:12:53.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "178245",
+    "ThreadId": "53005",
+    "Html": "Hi,<br>\r\n<br>\r\nThank you for this snapin / .dll.&nbsp; Below are two functions I use to toggle between a large powershell window and a small one.&nbsp; Maybe others will find them helpful.<br>\r\n<br>\r\nI am eagerly awaiting the arrival of cmdlets to dock the powershell window to other applications.&nbsp; Or maybe those cmdlets are already available?<br>\r\n<br>\r\nfunction set-windowposition-1<br>\r\n{<br>\r\n&nbsp;&nbsp; &nbsp;$a = select-window -activewindow<br>\r\n&nbsp;&nbsp; &nbsp;set-windowposition -left 925 -top 850 -width 1000 -Height 188 -window $a<br>\r\n}<br>\r\nfunction set-windowposition-2<br>\r\n{<br>\r\n&nbsp;&nbsp; &nbsp;$a = select-window -activewindow<br>\r\n&nbsp;&nbsp; &nbsp;set-windowposition -left 925 -top 100 -width 1000 -Height 938 -window $a<br>\r\n}<br>\r\nset-alias swp set-windowposition-1<br>\r\nset-alias bwp set-windowposition-2<br>\r\n<br>\r\nThanks again!<br>\r\nMike \r\n",
+    "PostedDate": "2009-04-11T14:33:43.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

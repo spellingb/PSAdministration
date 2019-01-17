@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "663889",
+    "ThreadId": "270552",
+    "Html": "\r\n<p>First and foremost, thank you very much for putting this great little package together. I've been wanting a scriptable way to &quot;clean up&quot; my windows and return them to my preferred sizes and locations for quite a while now. Phantastisch!</p>\r\n<p>&nbsp;</p>\r\n<p>One tiny little annoyance -- why doesn't it accept -Left 0 or -Top 0 for a WindowPosition? Those are certainly valid locations on screen. But if I use them, whichever parameter has the 0 value is simply ignored while the rest are accepted. I'm guessing there's\r\n some bizarreness with the behavior of the underlying API...?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks again!</p>\r\n",
+    "PostedDate": "2011-08-26T09:01:46.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

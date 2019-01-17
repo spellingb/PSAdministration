@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "1027213",
+    "ThreadId": "439506",
+    "Html": "Hello,\r<br />\nWhen I download a file, the file download popup appears.\r<br />\nI can do a send-click on the cancel button but not Save or Open.\r<br />\nAll other features work. \r<br />\n<br />\nI have a french version.<br />\n<pre><code>$IE = New-Object -comObject InternetExplorer.Application.1 ; $IE.visible = $True \n$IE.Navigate(&quot;http://www.XXXX.fr/request?type=VIE&amp;date=20130326&amp;ext=zip&quot;)\nSelect-Window iexplore | Remove-Window -Passthru |Select-ChildWindow | Select-Control\n\nTitle\n-----\n...\nOu&amp;vrir\nEn&amp;registrer\nAnnuler\n...\n\nSelect-Window iexplore | Remove-Window -Passthru |Select-ChildWindow | Select-Control -title &quot;En&amp;registrer&quot;\n\nTitle\n-----\nEn&amp;registrer\n\nSelect-Window iexplore | Remove-Window -Passthru |Select-ChildWindow | Select-Control -title &quot;En&amp;registrer&quot; -recurse |send-click</code></pre>\n\nRegards,<br />\n",
+    "PostedDate": "2013-04-08T06:54:05.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027360",
+    "ThreadId": "439506",
+    "Html": "I'm hoping someone who's tried that before will pipe up, but if you're getting the frame notification, the simplest way to deal with those is with the hotkey for the button you want: %S (Alt+S) for Save, or %O (Alt+O) for Open:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:OrangeRed;\">$IE</span> <span style=\"color:Gray;\">=</span> New<span style=\"color:Gray;\">-</span>Object <span style=\"color:Gray;\">-</span>comObject InternetExplorer.Application.1 ; <span style=\"color:OrangeRed;\">$IE</span>.visible <span style=\"color:Gray;\">=</span> <span style=\"color:OrangeRed;\">$True</span> \n<span style=\"color:OrangeRed;\">$IE</span>.Navigate(<span style=\"color:#A31515;\">&quot;https://wasp.codeplex.com/downloads/get/55849&quot;</span>)\nStart<span style=\"color:Gray;\">-</span>Sleep 3\nSelect<span style=\"color:Gray;\">-</span>Window iexplore | Select<span style=\"color:Gray;\">-</span>Control <span style=\"color:Gray;\">-</span>Class <span style=\"color:#A31515;\">&quot;Frame Notification Bar&quot;</span> | Send<span style=\"color:Gray;\">-</span>Keys <span style=\"color:#A31515;\">&quot;%S&quot;</span>\r\n</pre></div>",
+    "PostedDate": "2013-04-08T10:31:21.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027719",
+    "ThreadId": "439506",
+    "Html": "Thank's for you answer.\r<br />\n<br />\nI tried...sleep.<br />\n<pre><code>a = Select-Window iexplore | Remove-Window -Passthru |Select-ChildWindow |set-windowactive ; sleep 3 ; $a |Send-Keys &quot;%r&quot;</code></pre>\n\n",
+    "PostedDate": "2013-04-09T01:35:31.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1027942",
+    "ThreadId": "439506",
+    "Html": "So is it working for you? \r<br />\n<br />\nFor what it's worth, the only reason I used Start-Sleep is because in my example, .Navigate() is going to a page that redirects to the actual download, so I had to wait for the download to start and show up on the notification.<br />\n",
+    "PostedDate": "2013-04-09T09:01:51.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

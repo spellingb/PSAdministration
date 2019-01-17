@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "845759",
+    "ThreadId": "358640",
+    "Html": "\r\n<p>Is the project dead? &nbsp;The 1.3 release is still called &quot;Beta&quot; 3 years later. &nbsp;The&nbsp;discussions&nbsp;and activity are low. &nbsp;I'm just trying to gauge whether or not to even try this, or what's going on?</p>\r\n",
+    "PostedDate": "2012-06-06T14:51:45.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002918",
+    "ThreadId": "358640",
+    "Html": "I think it is dead, yes.\r<br />\n<br />\nStill works for little automation utilities but you shouldn't use it for anything that must be reliable.<br />\n",
+    "PostedDate": "2013-02-18T10:12:03.847-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002947",
+    "ThreadId": "358640",
+    "Html": "Of course it's not &quot;dead&quot; -- I still answer questions here in the forum all the time, and as you can see, there are <strong>no outstanding feature requests</strong><br />\n<br />\nWhy are you dredging up ancient threads and discouraging people from using it?<br />\n<br />\nFor what it's worth, all active development has been done on the &quot;UI Automation&quot; module on PoshCode.org, and therefore hasn't shown up as checkins here.  You are, of course, free to check out the alternative UI Automation module from xinliu <a href=\"http://uiautomation.codeplex.com\" rel=\"nofollow\">here on codeplex</a> -- especially you, togakangaroo :-P<br />\n",
+    "PostedDate": "2013-02-18T11:03:45.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002950",
+    "ThreadId": "358640",
+    "Html": "Ah, appreciate the clarification.\r<br />\n<br />\nThat's why I tried pinging you over on Huddled Masses to try to get this figured out :) Btw, after I submitted the contact form it took me to a &quot;the resource could not be found&quot; page.<br />\n",
+    "PostedDate": "2013-02-18T11:08:17.797-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002969",
+    "ThreadId": "358640",
+    "Html": "I should probably just take down that contact thing and explain you can just email my username at HuddledMasses.org (or use my username &quot;Jaykul&quot; (or email address at HuddledMasses) to IM me on AIM/Twitter/Facebook/Jabber/GTalk/MSN/Skype/etc).<br />\n",
+    "PostedDate": "2013-02-18T11:32:58.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1002977",
+    "ThreadId": "358640",
+    "Html": "Ah, appreciate the clarification.\r<br />\n<br />\nThat's why I tried pinging you over on Huddled Masses to try to get this figured out :) Btw, after I submitted the contact form it took me to a &quot;the resource could not be found&quot; page.<br />\n",
+    "PostedDate": "2013-02-18T11:48:04.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1103961",
+    "ThreadId": "358640",
+    "Html": "<strong>Jaykul wrote:</strong><br />\n<blockquote>\nOf course it's not &quot;dead&quot; -- I still answer questions here in the forum all the time, and as you can see, there are <strong>no outstanding feature requests</strong><br />\n<br />\nWhy are you dredging up ancient threads and discouraging people from using it?<br />\n<br />\nFor what it's worth, all active development has been done on the &quot;UI Automation&quot; module on PoshCode.org, and therefore hasn't shown up as checkins here.  You are, of course, free to check out the alternative UI Automation module from xinliu <a href=\"http://uiautomation.codeplex.com\" rel=\"nofollow\">here on codeplex</a> -- especially you, togakangaroo :-P<br />\n</blockquote>\nHi, I can't quite understand your meaning:\r<br />\nWhat's the difference and relationship between WASP and UI Automation?<br />\n",
+    "PostedDate": "2013-10-05T07:03:31.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1104101",
+    "ThreadId": "358640",
+    "Html": "The System.Windows.UIAutomation namespace in .Net enables automation similar to what WASP does. \r<br />\n<br />\nI wrote a Script Module based on System.Windows.UIAutomation (aka SWA, aka UIAutomation) and posted it to PoshCode, and that's where the current development has been. It's past time I posted it here, of course, because it's just about ready for real use and probably needs beta testers more than anything else.\r<br />\n<br />\nThe cool thing about using SWA is that I don't have to provide a binary module, because the stuff that's necessary is built into the .Net Framework.  The frustrating thing about it is that it is designed for systems and developers that think differently than PowerShell normally does, and every time I've tried to make it fit the PowerShell model better I've come up short ;-)<br />\n",
+    "PostedDate": "2013-10-05T20:00:01.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1104109",
+    "ThreadId": "358640",
+    "Html": "Thank you for your detail.<br />\n",
+    "PostedDate": "2013-10-05T21:32:30.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

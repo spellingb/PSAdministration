@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "837094",
+    "ThreadId": "355975",
+    "Html": "\r\n<p>How can use use WASP to detect if an application's window has created a dialog window? E.g., if I send the keys &quot;^f&quot; to the Notepad window, that causes the Find dialog to appear; is there any way I can check if this dialog appeared or not?</p>\r\n<p>I am trying to create a PS script that works with IMFcompanion. In that application, I use Control&#43;F to &nbsp;bring up the &quot;Find&quot; dialog that I can use to find an e-mail message, and then I use Shift&#43;F3 to select all messages that match the same criteria.\r\n I can do this with WASP no problem.</p>\r\n<p>However, if the first Find dialog did not find any messages, sending the keys Shift&#43;F3 causes a new Find dialog to appear. This breaks my script, because the rest of the script cannot work when that dialog is open.</p>\r\n<p>I need to be able to send the keys Shift&#43;F3, detect if a new dialog has appeared, and then decide what to do.</p>\r\n<p>I have tried using <em>select-control -recurse,</em> but the result of that is the same whether the find dialog is open or not, and\r\n<em>select-childwindow</em> does nothing, because apparently that dialog is not a child window.</p>\r\n<p>The Find dialog in <em>IMFcompanion </em>is a modal window, if that helps.</p>\r\n",
+    "PostedDate": "2012-05-16T02:24:10.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

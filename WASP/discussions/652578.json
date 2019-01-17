@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1467013",
+    "ThreadId": "652578",
+    "Html": "I love WASP so far. Any chance it could be modified to be multiple desktop aware? I'd love a send to DesktopX command. Maybe call it SendTo-Desktop?<br />\n",
+    "PostedDate": "2016-03-16T09:08:38.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1467016",
+    "ThreadId": "652578",
+    "Html": "Just send it the Winkey + arrow keys!\r<br />\n<br />\nIt has full capability to address the x, y coordinates of the entire virtual desktop (and beyond: you can send windows off screen).  It is possible to write a script that counts monitors and figures out each monitor's boundaries ... but Winkey+Arrow works really well already.\r<br />\n<br />\nP.S. Have you tried my UIAutomation script-based WASP 2 <a href=\"http://poshcode.org/4099\" rel=\"nofollow\">http://poshcode.org/4099</a> or the binary UIAutomation module <a href=\"http://uiautomation.codeplex.com\" rel=\"nofollow\">http://uiautomation.codeplex.com</a><br />\n",
+    "PostedDate": "2016-03-16T09:53:06.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1467018",
+    "ThreadId": "652578",
+    "Html": "If I just want to send one or two windows to another desktop, Winkey+arrow is fine. I’d like to be able to send a list or maybe a category of windows to another desktop. Say, send all remote desktops and SSH windows to a desktop. Or all email windows to a desktop.\r<br />\n<br />\nIt would also be nice to be able to script adding a desktop.  Scenario: desktop is way too cluttered. Run script that adds another desktop (maybe I already have one, so this will be #3) and then move all my open emails to that desktop.<br />\n",
+    "PostedDate": "2016-03-16T10:12:19.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

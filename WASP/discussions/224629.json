@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "484066",
+    "ThreadId": "224629",
+    "Html": "<p>In a web app that I am trying to automate testing for the line of code that calls a button's click event hangs and waits for the alert box to be dismissed. I can't figure out a way to get past this. The line of code is simply $ctrl.click(), but being a blocking call I can't seem to dismiss it via code. I have tried making an async call but haven't been able to get it to work, although it could be my lack of powershell that is preventing me from getting it to work. Any help/suggestiongs would be greatly appreciated.</p>",
+    "PostedDate": "2010-08-24T04:57:29.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

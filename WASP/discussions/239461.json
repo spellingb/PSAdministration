@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "540098",
+    "ThreadId": "239461",
+    "Html": "\r\n<p>Being new to Powershell, it took me a few minutes to figure out how to install WASP. &nbsp;I am running Windows 7, which has Powershell version 2 built in. &nbsp;Not sure if this applies to v1.0 of Powershell:</p>\r\n<p>&nbsp;</p>\r\n<p>Download WASP and extract the files</p>\r\n<p>Take the extracted&nbsp;<em>WASP.DLL</em>&nbsp;and copy it to&nbsp;<em>C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\WASP\\WASP.dll</em>.&nbsp;</p>\r\n<p>Start Powershell</p>\r\n<p>Import-Module WASP</p>\r\n<p># run commands using WASP, e.g.</p>\r\n<p><code>Select</code><code>-Window</code>&nbsp;<code>Notepad</code></p>\r\n<p>See examples at&nbsp;<a href=\"http://hinchley.net/2009/10/29/using-send-keys-with-windows-powershell-to-automate-dialog-actions\">http://hinchley.net/2009/10/29/using-send-keys-with-windows-powershell-to-automate-dialog-actions</a></p>\r\n",
+    "PostedDate": "2010-12-23T15:33:23.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

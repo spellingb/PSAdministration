@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "1490451",
+    "ThreadId": "660409",
+    "Html": "Good day,\r<br />\n<br />\nI am using Powershell ISE with WASP commands to login to Website click on upload, the code works and i click upload to select file the script freezes on IE Dialog winodw to select file\r<br />\n<br />\n$ie.Document.getElementByID(&quot;form:filesField:files:file&quot;).Click()  #Upload Button and Dialog PopsUp\r<br />\n Select-Window -Class 'Modal' | Set-WindowActive | Send-Keys 'C:\\Temp\\20161215.csv~'\r<br />\n<br />\nThe script does not get to the second line of code as its unable to set focus but when i run the second line in another powershell_ise window while dialog is open then it sets focus and works so i tried running another powershell_ise Before or After i click the ShowDialog before it freezes.\r<br />\n<br />\nInvoke-Expression &quot;C:\\Temp\\test.ps1&quot;\r<br />\n<br />\nFile test.ps1: \r<br />\n<br />\nStart-Sleep -Seconds 15\r<br />\n Import-Module WASP -Force\r<br />\n Add-PSSnapin WASP\r<br />\n Select-Window -Class 'Modal' | Set-WindowActive | Send-Keys 'C:\\Temp\\20161215.csv~'\r<br />\n<br />\nBut before or after does not work or execute as its still freezes, I have read there are issues with the web form needing an action but i dont know how to bypass or a on click event or something - please im kind of depserate as i this is my only stumb ling block\r<br />\nAny help please\r<br />\n<br />\nRegards<br />\n",
+    "PostedDate": "2016-12-30T02:39:57.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

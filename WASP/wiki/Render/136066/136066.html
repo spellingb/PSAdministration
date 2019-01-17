@@ -1,0 +1,43 @@
+<div class="wikidoc"><h3>My standard demo:</h3><pre>
+## Open a couple windows
+notepad.exe
+explorer.exe
+## list the windows
+Select-Window | ft –auto
+## Activate Notepad
+Select-Window notepad* | Set-WindowActive
+## Close Explorer
+Select-Window explorer | Select -First 1 | Remove-WIndow
+## Run a few more copies of notepad
+notepad; notepad; notepad; notepad;
+## Move them around so we can see them all ... (Note the use of foreach with the incrementation)
+$i = 1;$t = 100; Select-Window notepad | ForEach { Set-WindowPosition -X 20 -Y (($i++)*$t) -Window $_ }
+## Put some text into them ...
+Select-Window notepad | Send-Keys &quot;this is a test&quot;
+## Close the first notepad window by pressing ALT+F4, and pressing Alt+N
+## In this case, you don&#39;t have to worry about shifting focus to the popup because it&#39;s modal
+## THE PROBLEM with sending keys like that is:
+##    if there is no confirmation dialog because the file is unchanged, the Alt+N still gets sent
+Select-Window notepad | Select -First 1 | Send-Keys &quot;%{F4}%n&quot;
+## Close the next notepad window ... 
+## By asking nicely (Remove-Window) and then hitting &quot;n&quot; for &quot;Don&#39;t Save&quot;
+## If there are no popups, Select-ChldWindow returns nothing, and that&#39;s the end of it
+Select-Window notepad | Select -First 1 | Remove-Window -Passthru | 
+   Select-ChildWindow | Send-Keys &quot;n&quot;
+## Close the next notepad window the hard way 
+## Just to show off that our &quot;Window&quot; objects have a ProcessID and can be piped to kill
+Select-Window notepad | Select -First 1 | kill
+## A different way to confirm Don&#39;t Save (use CLICK instead of keyboard)
+## Notice how I dive in through several layers of Select-Control to find the button?
+## This can only work experimentally: 
+## use SPY++, or run the line repeatedly, adding &quot;|Select-Control&quot; until you see the one you want
+Select-Window notepad | Select -First 1 | Remove-Window -Passthru | 
+   Select-childwindow | select-control| select-control| select-control -title &quot;Do&amp;n&#39;t Save&quot; | Send-Click
+## But now we have the new -Recurse parameter, so it&#39;s easy.  Just find the window you want and ...
+Select-Window notepad | Select -First 1 | Remove-Window -Passthru | 
+   Select-childwindow | select-control -title &quot;Do&amp;n&#39;t Save&quot;  -recurse | Send-Click
+</pre><br />
+<h3>My favorite use: re-dock all visual studio tool windows</h3><pre>
+## NOTE: 0, 0 is the resize corner, so you need to specify X,Y coordinates for the click:
+Select-Window devenv | Select-ChildWindow | Send-Click 10 10 -Double 
+</pre></div><div class="ClearBoth"></div>

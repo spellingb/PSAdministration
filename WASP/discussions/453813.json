@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1082122",
+    "ThreadId": "453813",
+    "Html": "Hi,\r<br />\n<br />\nI am using following command to maximize an MMC window.\r<br />\n<br />\n&quot;Select-Window -ProcessName mmc  |  Set-WindowActive | Set-WindowPosition -maximize&quot;\r<br />\n<br />\nThe window becomes active but does not maximize.\r<br />\n<br />\nBelow are the details of the window.\r<br />\n<br />\nProcessName : mmc\r<br />\nProcessId   : 4240\r<br />\nIsActive    : False\r<br />\nHandle      : 5374370\r<br />\nTitle       : Console1 - [Console Root]\r<br />\nClass       : MMCMainFrame\r<br />\n<br />\nIt would be great if anyone has solution to this issue<br />\n",
+    "PostedDate": "2013-08-19T05:28:44.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082221",
+    "ThreadId": "453813",
+    "Html": "Your console window has to be elevated to control elevated windows.\r<br />\n<br />\nThat is, MMC always runs elevated (&quot;as administrator&quot;), and although you can find it and set it active, you can't position it or send keys to it etc unless you're also elevated.<br />\n",
+    "PostedDate": "2013-08-19T08:22:26.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1082793",
+    "ThreadId": "453813",
+    "Html": "Thanks Jaykul, that solved the issue.<br />\n",
+    "PostedDate": "2013-08-20T10:51:15.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

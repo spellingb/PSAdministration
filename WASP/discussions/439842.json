@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "1028662",
+    "ThreadId": "439842",
+    "Html": "I may not be the smartest guy in the room... but I'm not the dumbest.  The documentation tab is completely void of anything.  The examples don't really explain HOW to use it... just leads you by the nose on a couple of novel examples.<br />\n\r<br />\nI started out very simply and it just isn't working.  Opened notepad manually.  \r<br />\n<pre><code>Select-Window -ProcessName &quot;notepad&quot; | Set-WindowActive | Send-Click -Button Right</code></pre>\n\nThe notepad window comes to the foreground but it does not right click.  If it did right click I would get a menu box that would pop up.<br />\n\r<br />\nI tried :<br />\n<pre><code>Select-Window -ProcessName &quot;notepad&quot; | Set-WindowActive | Send-Click -Button Left</code></pre>\n\nAgain it comes to the foreground but does not left click.  If it did then the text I had highlighted from before would become un-highlighted as it clicked somewhere else.<br />\n\r<br />\nTried giving it a position thinking it wasn't anywhere in the window.  \r<br />\n<pre><code>Select-Window -ProcessName &quot;notepad&quot; | Set-WindowActive | Send-Click -Left 800-Top 425 -Button Left</code></pre>\n\nMy desktop resolution is 1600x900 so it should be somewhere near the center which would be in the middle of my text document.  Same behavior.  I tried throwing in some start-sleeps and that didn't seem to make a difference.<br />\n\r<br />\nSend-Keys seems to work  \r<br />\n<pre><code>Select-Window -ProcessName &quot;notepad&quot; | Set-WindowActive | Send-Keys &quot;derp&quot;</code></pre>\n\nIt replaces what I had highlighted with derp which is exactly what i expected.<br />\n\r<br />\nAll I'm trying to do is simply send a left click, or hold left click for a duration of time, on an active window.  It seems really simple but I don't get why it's not working.<br />\n\r<br />\nPlease advise or point me to some real documentation I can refer to.\r<br />\n<br />\nThanks!<br />\n",
+    "PostedDate": "2013-04-10T13:24:36.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1028788",
+    "ThreadId": "439842",
+    "Html": "Yeah, sorry ... I've been playing with the UIAutomation script version of this and don't want to write documentation for this version because the new one is so different. \r<br />\n<br />\nFirst off: I HIGHLY recommend avoiding clicks for UI Automation.  They're unreliable because they have to have coordinates. Some windows won't respond to a click at 0,0 so you have to specify coordinates just to get them to work at all.<br />\n\r<br />\nThe problem you're having has to do with which element you're targeting and the exact coordinates being clicked. Send-Click <strong>targets</strong> the specific window/control that has been selected, and defaults to the 0, 0 coordinates, so your click is basically hitting the window border where nothing happens when you click or double-click.\r<br />\n<br />\nThe following works:<br />\n<div style=\"color:Black;background-color:White;\"><pre>\r\n<span style=\"color:OrangeRed;\">$edit</span> <span style=\"color:Gray;\">=</span> Select<span style=\"color:Gray;\">-</span>Window notepad | Select<span style=\"color:Gray;\">-</span>Control Edit \n<span style=\"color:OrangeRed;\">$edit</span> | Send<span style=\"color:Gray;\">-</span>Keys <span style=\"color:#A31515;\">&quot;This is a test of the clickity-click system&quot;</span>\n<span style=\"color:OrangeRed;\">$edit</span> | Send<span style=\"color:Gray;\">-</span>Click <span style=\"color:Gray;\">-</span>DoubleClick <span style=\"color:Gray;\">-</span>top 10 <span style=\"color:Gray;\">-</span>Left 10\r\n</pre></div>The click selects the first word. It works because the click is going <strong>to</strong> the Edit control, <em>and</em> is offset at 10, 10 from the top left corner of the window. If you don't offset, the click goes to the border of the edit control, which <em>still</em> doesn't do anything. My guess is that in your example, 800, 425 is too far and going right off the window, but probably wouldn't work without targeting the edit control anyway.\r<br />\n<br />\nBut again, I wouldn't use clicks if I can avoid it. Send the keystrokes or move-window, etc when you can.\r<br />\n<br />\nI am currently working on a Module Packaging system for PoshCode.org, but when that's finished, I will prioritize getting the next version of the <a href=\"http://poshcode.org/4099\" rel=\"nofollow\">UI Automation script version of WASP</a><br />\n",
+    "PostedDate": "2013-04-10T19:43:51.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030239",
+    "ThreadId": "439842",
+    "Html": "Send-Keys or Send-Click are both fine for what I want to do; so I'll try Send-Keys as you advise.<br />\n<br />\nAgain it works fine with Notepad but I don't really need to manipulate Notepad.  I have game window that I want to send a key to.  \n<br />\n<pre><code>Import-Module .\\WASP.dll\n\nSelect-Window PS2 | Set-WindowActive\n\n$PS2_Client = Select-Window PS2 | Set-WindowActive\n</code></pre>\n\nThat all seems to work fine there.  Module imports, I can select the window and bring it to the foreground with Set-WindowActive.<br />\nNow lets try to send it some keys. <br />\n<br />\n I bound the L key in the game to a simple function.  If I interactively hit the L key on my keyboard it fires the main gun.  However if I try this command... does nothing. <br />\n<pre><code>$PS2_Client = Select-Window PS2| Set-WindowActive\n\n\n$PS2_Client | Send-Keys &quot;LLLL&quot;\n\n\n</code></pre>\n\nThe game window comes to the foreground .... and it's like stuck.... Click the mouse manually and it snaps back and operates interactively but it doesn't shoot the main gun.  <br />\n",
+    "PostedDate": "2013-04-14T08:55:29.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030277",
+    "ThreadId": "439842",
+    "Html": "You may need to select a child control and send keystrokes to that.<br />\n",
+    "PostedDate": "2013-04-14T11:12:36.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030288",
+    "ThreadId": "439842",
+    "Html": "I feel like I'm missing a huge, fundamental, part of how this all works.<br />\n\r<br />\nFor example:<br />\nSelect-Control - pick controls (children) of a specific window, by class and/or name and/or index (with wildcard support) \r<br />\n<br />\nWhat are the classes?<br />\nHow do I know one of them is Select-Control Edit other than someone telling me that is one of them? \r<br />\nHow do I know which classes are available to a given program window object?<br />\nHow do I figure out which child control to interface with?<br />\n\r<br />\nGet-Help gives me some info but not ALL the info I need.  Doesn't even mention &quot;edit&quot; or any other classes or how to even call a class:<br />\n<pre><code>PS C:\\Temp\\WASP&gt; get-help Select-Control\n\nNAME\n    Select-Control\n\nSYNTAX\n    Select-Control [[-Index] &lt;Int32&gt;] -Window &lt;WindowHandle&gt; [-Title &lt;String&gt;] [-Recurse] [-Verbose] [-Debug] [-ErrorAc\n    tion &lt;ActionPreference&gt;] [-WarningAction &lt;ActionPreference&gt;] [-ErrorVariable &lt;String&gt;] [-WarningVariable &lt;String&gt;]\n    [-OutVariable &lt;String&gt;] [-OutBuffer &lt;Int32&gt;]\n    Select-Control [-Class] &lt;String&gt; [[-Title] &lt;String&gt;] [[-Index] &lt;Int32&gt;] -Window &lt;WindowHandle&gt; [-Recurse] [-Verbose\n    ] [-Debug] [-ErrorAction &lt;ActionPreference&gt;] [-WarningAction &lt;ActionPreference&gt;] [-ErrorVariable &lt;String&gt;] [-Warnin\n    gVariable &lt;String&gt;] [-OutVariable &lt;String&gt;] [-OutBuffer &lt;Int32&gt;]\n</code></pre>\n\n",
+    "PostedDate": "2013-04-14T12:00:50.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1030293",
+    "ThreadId": "439842",
+    "Html": "The help is woefully lacking because the cmdlets are compiled (not script), I need to write MAML help files (which is still a pain in PowerShell) rather than just comment-based help.  Anyway, the fact is, there's no way to know the answer to that.\r<br />\n<br />\nClasses are created by programmers.  There's a certain subset of them which are common ( &quot;Edit&quot; for instance), but there's an infinite number of possibilities (that's why there's not an enum tab-complete list). Same goes for Window handles, of course -- except worse: those are relatively random numbers generated by the system.\r<br />\n<br />\nThere's no way for me to know what classes are available in your app, that's why when you pipe a window (or a control) to Select-Control, it shows you all the immediate child items, by default.  Normally, you just keep adding another | Select-Control  ... until you find something that looks right.<br />\n\r<br />\nThe best way, perhaps, is to get out Spy++ or something like it and use it to CLICK on the control you want to interact with and find it's class...\r<br />\n<br />\nCommercial tools come with recorders that will track each click and set it all up for you.  There's actually another PowerShell <a href=\"http://uiautomation.codeplex.com/\" rel=\"nofollow\">UIAutomation project on CodePlex</a> which claims to be able to do that (I haven't tried it).<br />\n",
+    "PostedDate": "2013-04-14T12:25:37.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

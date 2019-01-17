@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "995574",
+    "ThreadId": "431754",
+    "Html": "Hi,\r<br />\n<br />\nI would like to move a powershell console window.\r<br />\nI try this script :<br />\n<pre><code>Import-Module C:\\Temp\\WASP\\WASP.dll -verbose:$false\nSelect-Window powershell -verbose:$false | send-keys &quot;% M{LEFT 10}{ENTER}&quot; -verbose:$false</code></pre>\n\nBut I get an error as it sent only &quot;% &quot;\r<br />\nBut If I change powershell by notepad in the select-window it works fine !\r<br />\n<br />\nHow can I move the powershell console windows from where I run a script ?\r<br />\nThank you for your help.\r<br />\n<br />\nLudovic.\r<br />\n<br />\nPS : If you want to know why I need that ... It is because I have to make a silent install of Acrobat Reader 4.05 and my installation works only If I move the powershell consol window !!!<br />\n",
+    "PostedDate": "2013-02-02T07:18:37.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "995629",
+    "ThreadId": "431754",
+    "Html": "I don't know -- that should work (and works on other windows), but on Windows 8, I can't make it work on that console window at all.  Works on the ConEmu window, can I convince you to upgrade your console? <a href=\"http://code.google.com/p/conemu-maximus5/\" rel=\"nofollow\">http://code.google.com/p/conemu-maximus5/</a><br />\n",
+    "PostedDate": "2013-02-02T11:43:12.55-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "995636",
+    "ThreadId": "431754",
+    "Html": "Oh, I just tested this, and it works fine with the preview of WASP2 which I released.  The latest version is here <a href=\"http://poshcode.org/get/3931\" rel=\"nofollow\">http://poshcode.org/get/3931</a> (WASP.psm1) and requires (<a href=\"http://poshcode.org/get/3174\" rel=\"nofollow\">http://poshcode.org/get/3174</a> (Reflection.psm1) which requires <a href=\"http://poshcode.org/get/3173\" rel=\"nofollow\">http://poshcode.org/get/3173</a> (Autoload.psm1)\r<br />\n<br />\nWIth those you can write:\r<br />\n<br />\nSelect-UIElement -PID $PID | Invoke-Transform.Move -x 0 -y 0<br />\n",
+    "PostedDate": "2013-02-02T12:06:23.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "995754",
+    "ThreadId": "431754",
+    "Html": "Hi,\r<br />\n<br />\nMy first computer is installed with Windows 7 and Powershell v3 and your Wasp2 works fine.\r<br />\nBut with another with Windows 7 and Powershell V2 it doesn't work.\r<br />\nThe two first import-module work fine.\r<br />\nBut the third failed.\r<br />\n<br />\nImport-Module \\PBCApplic\\Applic\\Outils\\Scripts\\PowerShell\\WASP\\WASP.psm1\r<br />\nUnable to find type [System.Windows.Automation.ControlType]: make sure that the assembly containing this type is loaded\r<br />\n.\r<br />\nAt \\PBCApplic\\Applic\\Outils\\Scripts\\PowerShell\\WASP\\WASP.psm1:427 char:57<br />\n<ul>\n<li>\n[StaticField(([System.Windows.Automation.ControlType] &lt;&lt;&lt;&lt; ))]$ControlType<br />\n<ul>\n<li>CategoryInfo          : InvalidOperation: (System.Windows.Automation.ControlType:String) [], ParentContainsError<br />\nRecordException</li>\n<li>\nFullyQualifiedErrorId : TypeNotFound<br />\n</li>\n</ul>\n</li>\n</ul>\nImport-Module : The specified module '\\PBCApplic\\Applic\\Outils\\Scripts\\PowerShell\\WASP\\WASP.psm1' was not loaded becau\r<br />\nse no valid module file was found in any module directory.\r<br />\nAt line:1 char:14<br />\n<ul>\n<li>\nImport-Module &lt;&lt;&lt;&lt;  \\PBCApplic\\Applic\\Outils\\Scripts\\PowerShell\\WASP\\WASP.psm1<br />\n<ul>\n<li>CategoryInfo          : ResourceUnavailable: (\\PBCApplic\\App...\\WASP\\WASP.psm1:String) [Import-Module], FileNot<br />\nFoundException</li>\n<li>\nFullyQualifiedErrorId : Modules_ModuleNotFound,Microsoft.PowerShell.Commands.ImportModuleCommand<br />\n</li>\n</ul>\n</li>\n</ul>\nAny suggestion ?\r<br />\n<br />\nLudovic.<br />\n",
+    "PostedDate": "2013-02-03T05:31:47.553-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "995792",
+    "ThreadId": "431754",
+    "Html": "That class is in uiautomationtypes, which is explicitly loaded by the module, so I'm not sure how it could fail. Run the add-type line by hand and then test that you can access that type by just writing [System.Windows.Automation.ControlType] in the console.\r<br />\n<br />\n The only thing I can think of is that you're having a problem loading assemblies because it's on a UNC share (they changed the security model around that in .net 4, which PowerShell 3 uses automatically), so you could try making a local copy on the box, if the test above succeeds.<br />\n",
+    "PostedDate": "2013-02-03T09:00:13.623-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "995966",
+    "ThreadId": "431754",
+    "Html": "Hi,\r<br />\n<br />\nI'm just a user (recently advanced ! but not ultra advanced !!) of powershell.\r<br />\nYour links are for &quot;Autoload Module 1.2.ps1&quot;, &quot;Reflection Module 4.1.ps1&quot; and &quot;UIAutomation 1.9.ps1&quot;\r<br />\nI rename thee files like &quot;Autoload.psm1&quot;, &quot;Reflection.psm1&quot; and &quot;WASP.psm1&quot;\r<br />\nI unblocked them.\r<br />\nAnd in a powershell (V2) console, I strike :\r<br />\nImport-Module C:\\Temp\\Autoload.psm1\r<br />\nImport-Module C:\\Temp\\Reflection.psm1\r<br />\nImport-Module C:\\Temp\\WASP.psm1\r<br />\nI got no message with the two frst commands and an error with the third.\r<br />\nIf I strike the line Add-Type -AssemblyName &quot;UIAutomationTypes, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot; I can then re-execute the third line without errors ...\r<br />\n<br />\nLudovic.<br />\n",
+    "PostedDate": "2013-02-04T00:28:33.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "996479",
+    "ThreadId": "431754",
+    "Html": "That's really weird, since the code in that module file is:<br />\n<pre><code>if($PSVersionTable.CLRVersion -gt &quot;4.0&quot;) {\n    $Language = &quot;CSharp&quot; # Version 4\n    Add-Type -AssemblyName &quot;UIAutomationClient, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot;\n    Add-Type -AssemblyName &quot;UIAutomationTypes, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot;\n} else {\n    # In PowerShell 2, we need to use the .Net 3 version\n    $Language = &quot;CSharpVersion3&quot; \n    Add-Type -AssemblyName &quot;UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot;\n    Add-Type -AssemblyName &quot;UIAutomationTypes, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot;\n}</code></pre>\n\nIt seems like you're on PowerShell v2, so unless you've tweaked PowerShell.exe.config, your host will return $PSVersionTable.CLRVersion as something like 2.0 -- which will result in running that Add-Type line in the module.  If you want, you could tweak the WASP.psm1 module to remove the 4.0 stuff, but just remember you did that in case you upgrade to PowerShell 3 later:<br />\n<pre><code>    # In PowerShell 2, we need to use the .Net 3 version\n    $Language = &quot;CSharpVersion3&quot; \n    Add-Type -AssemblyName &quot;UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot;\n    Add-Type -AssemblyName &quot;UIAutomationTypes, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35&quot;</code></pre>\n\n",
+    "PostedDate": "2013-02-04T19:41:42.22-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "996513",
+    "ThreadId": "431754",
+    "Html": "Hi,\r<br />\n<br />\nI add a line in the WASP.psm1 just before the first IF : Write-Host &quot;Hello&quot;\r<br />\nWith py powershell v2, after importing module Autoload and Reflexion, when I want to import the wasp module I get the error.\r<br />\nIf I add the type manualy and re-import the wasp module I get my message &quot;Hello&quot;.\r<br />\nIt seems like the import-module pre-compile the file before executing it.\r<br />\n<br />\nLudovic.<br />\n",
+    "PostedDate": "2013-02-04T22:59:26.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

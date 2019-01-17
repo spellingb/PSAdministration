@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "113867",
+    "ThreadId": "34309",
+    "Html": "Hi,<br>\r\n<br>\r\nIs an interactive session required for this to work?&nbsp; I need it to work from a scheduled task.<br>\r\n<br>\r\nThanks.<br>\r\n",
+    "PostedDate": "2008-08-26T09:21:33.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "148845",
+    "ThreadId": "34309",
+    "Html": "I'm not really sure about this one, guys. I'll have to try it.&nbsp; I believe it will work to the same extent that any of the graphical apps you would want to use it against will work.&nbsp; Particularly, I know it'll run from a scheduled task if you invoke the task with your own account while you're logged in, but if regular GUI apps won't work in the context that it's running in, then of course, there won't be anything for it to do.<br>\r\n",
+    "PostedDate": "2009-01-20T11:38:22.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "532902",
+    "ThreadId": "34309",
+    "Html": "\r\n<p>I've run into the same issue.&nbsp; On a Win 2003 server, when I execute my WASP-equipped script in a Powershell console on the desktop (while the GUI I want to manipulate is running in the background), everything is fine.&nbsp; When I execute the same script\r\n in a scheduled task, none of my WASP commands work.&nbsp; Actually, they work just fine, but the GUI window is nowhere to be found.&nbsp; It's as if it exists in a different session, or a different context as previously mentioned.&nbsp; I get the feeling I'm\r\n missing something here and there could be an easy fix...</p>\r\n",
+    "PostedDate": "2010-12-08T07:28:55.01-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

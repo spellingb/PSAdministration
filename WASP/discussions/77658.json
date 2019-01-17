@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "265506",
+    "ThreadId": "77658",
+    "Html": "<p>I've been successful at accessing any of the windows that appear in the &quot;Select-Windows&quot; list.&nbsp; But, how do I access the Taskbar - specifically the Start button?&nbsp; I have been using Task Manager and UI Spy to display the properties of the various controls, but I haven't figured out how the TaskBar.</p>\r\n<p>The access key is Ctrl-Esc, but what window do I send it to?&nbsp; I've tried sending it to any open window, but it hasn't work so far.</p>\r\n<p>The 'flag' key on the keyboard will also bring up the Start Menu, but I haven't located a key code for that key.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks in advance . . .</p>",
+    "PostedDate": "2009-12-09T16:20:42.027-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

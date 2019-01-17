@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1311544",
+    "ThreadId": "569316",
+    "Html": "I have been using WASP for the last week for a script I'm currently working on.  I have run the installer and I can import the .dll in a command line shell.  When I run get-command -module WASP, I get results.  If I attempt to do the same thing in ISE I get the error The term is not recognized as the name of a cmdlet, function....  I am calling the import-module function along with setting the execution policy for the local system to unrestricted.  I was using this module correctly until I had an issue with Excel.  Since rebooting, I have not been able to get this to work correctly in ISE (x86 or x64).  I'm currently using PS 2.0 and have also attempted to add AddPSSnapin WASP to my profile.ps1 file.<br />\n",
+    "PostedDate": "2014-10-08T06:20:49.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1311623",
+    "ThreadId": "569316",
+    "Html": "That's really weird.  Nowadays, you should be able to use Import-Module on the WASP.dll to use it that way.\r<br />\n<br />\nI guess this is just the final straw, and I should pull down the old .dll version and switch to the script as the preferred release, even though it might be a little harder to get your head around...<br />\n",
+    "PostedDate": "2014-10-08T10:12:21.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

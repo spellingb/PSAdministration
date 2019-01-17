@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "0",
+    "Name": "WASP 1.1",
+    "DevelopmentStatus": "Beta",
+    "Description": "Several fixes in this release, including loosening up the pipeline so you can pipe controls into Set-WIndowPosition (even though it might not work) ...\n\nAdded a Select-ChildWindow cmdlet which, in my testing, reliably finds child popup windows like file dialogs, message boxes and confirmations, and tool windows from visual studio...\n\nIf you have floating task panes from visual studio that you need to gather on one window, try something like this:\n\nselect-window devenv | select-childwindow | Set-WindowPosition -X 10 -Y 20\n\n! NOTE: the included Install.ps1 and Uninstall.ps1 _should_ work, but are mostly guidelines for running InstallUtil -- if you are on *PowerShell v2* you *do not need to install,* as you can use this dll as a Module (just use the Import-Module cmdlet) without needing administrative permissions to install it.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2009-01-19T21:59:47.037-08:00",
+    "Files": [
+      {
+        "Id": "24e905b4-92cf-46ab-9766-897e79a837ec",
+        "FileName": "WASP.zip",
+        "Url": "./0/24e905b4-92cf-46ab-9766-897e79a837ec",
+        "Type": "Application",
+        "UploadDate": "2009-01-19T21:59:46.773-08:00"
+      },
+      {
+        "Id": "fbbadf41-b537-4b67-95d8-2d66da6702f0",
+        "FileName": "WASP.7z",
+        "Url": "./0/fbbadf41-b537-4b67-95d8-2d66da6702f0",
+        "Type": "Application",
+        "UploadDate": "2009-01-19T21:59:46.553-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "WASP 1.2 (RC)",
+    "DevelopmentStatus": "Beta",
+    "Description": "This is another bug-fix cleanup release ... hopefully I've got most of the pipeline and parameter-set issues hammered out.\n\nCheck this out:\n\n{{\n## Run notepad a few times\nnotepad; notepad; notepad; \n## Put some text in it\nSelect-Window notepad | Send-Keys \"this is a test\"\n## Now close them all, and say \"no\" to the save dialog:\nSelect-Window notepad | Remove-Window -Pass | Select-ChildWindow | Send-Keys \"n\"\n}}",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2009-01-20T22:27:40.757-08:00",
+    "Files": [
+      {
+        "Id": "8fd1306c-afe9-4d55-8f41-c1c08c8413af",
+        "FileName": "WASP.zip",
+        "Url": "./1/8fd1306c-afe9-4d55-8f41-c1c08c8413af",
+        "Type": "Application",
+        "UploadDate": "2009-01-20T22:27:40.49-08:00"
+      },
+      {
+        "Id": "a63dd242-10e5-4838-9f55-d207a0cd48d8",
+        "FileName": "WASP.7z",
+        "Url": "./1/a63dd242-10e5-4838-9f55-d207a0cd48d8",
+        "Type": "Application",
+        "UploadDate": "2009-01-20T22:27:40.257-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "WASP 1.0.1.0 (BugFix Edition)",
+    "DevelopmentStatus": "None",
+    "Description": "This release fixes an ugly bug that prevented us from finding windows like cmd.exe based on their process or process name.\n\n*WARNING* THIS CHANGES the parameter names so they don't conflict with each other (so you can use shortcut names, but your old scripts might have problems).  I'm sorry, but I must have been crazy having a parameter {{-Process}} and another  {{-ProcessName}}\n\nDon't forget, you can get a list of the parameters for the commands by using this:\n\n{code:javascript}\nfunction help {\n  param([switch]$full) \n  get-help @args -EA \"SilentlyContinue\" -Full:$Full\n  if(!$?) { (get-command @args).ParameterSets | format-list Name, @{l=\"Definition\"; e={\"$_\"}} }\n}\n{code:javascript}",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2008-08-07T21:32:21.44-07:00",
+    "Files": [
+      {
+        "Id": "b15ef576-5141-4d1f-80db-45933a4199d1",
+        "FileName": "WindowsAutomation.zip",
+        "Url": "./2/b15ef576-5141-4d1f-80db-45933a4199d1",
+        "Type": "Application",
+        "UploadDate": "2008-08-07T21:32:21.47-07:00"
+      },
+      {
+        "Id": "8979515c-5816-44dd-9fbe-549118c00f8d",
+        "FileName": "WindowsAutomation.7z",
+        "Url": "./2/8979515c-5816-44dd-9fbe-549118c00f8d",
+        "Type": "Application",
+        "UploadDate": "2008-08-07T21:32:21.457-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Name": "WASP 1.0",
+    "DevelopmentStatus": "None",
+    "Description": "This is the first public release of the WindowsAutomation Snapin for PowerShell\n\nIt includes a bugfix over the version posted yesterday on [url:my blog|http://huddledmasses.org/window-gui-automation-from-powershell/], and should be enough to get this party started.\n\n* Select-Window - pick windows by process name or window caption (with wildcard support)\n* Select-Control - pick controls by class and/or name and/or index (with wildcard support)\n* Send-Click - send mouse clicks (any button, with any modifier keys)\n* Send-Keys - [url:Windows.Forms.SendKeys|http://msdn2.microsoft.com/en-us/library/system.windows.forms.sendkeys.asp] lets you send keys ... try this: {{Select-Window notepad | Send-Keys \"%(ea)Testing{Enter}{F5}\"}} (and for extra fun, try it with multiple notepad windows open).\n* Set-WindowActive - yeah, just activates the window\n* Set-WindowPosition - set any one of (or all of) top, left, width, height on a window ... or maximize/minimize/restore\n* Get-WindowPosition - get the position (kind-of redundant, actually, since the Window object has it's position as a property)\n* Remove-Window - closes the specified window\n\nThere's no help right now, so get used to using {{Get-Command -PSSnapin WindowAutomation | fl Name, ParameterSets}} and checking out the ParameterSets using ... hopefully you can figure it out from that for now.  Oh, one other thing, there might be a few extras hiding in these:\n\n{{\n[Huddled.Wasp.WindowExtenders] | Get-Member -static\n[Huddled.Wasp.WindowFinder] | Get-Member -static\n}}",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2007-12-21T08:18:42.277-08:00",
+    "Files": [
+      {
+        "Id": "82d5ca4c-e827-44c4-8036-1300e2d51e53",
+        "FileName": "WASP 1.0 Release.7z",
+        "Url": "./3/82d5ca4c-e827-44c4-8036-1300e2d51e53",
+        "Type": "Application",
+        "UploadDate": "2007-12-20T15:18:13.07-08:00"
+      },
+      {
+        "Id": "7992f865-ad57-48bf-a69a-e091ddb6ed4d",
+        "FileName": "Wasp Code.7z",
+        "Url": "./3/7992f865-ad57-48bf-a69a-e091ddb6ed4d",
+        "Type": "Source Code",
+        "UploadDate": "2007-12-20T15:18:10.96-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "4",
+    "Name": "WASP 1.3 (RC)",
+    "DevelopmentStatus": "Beta",
+    "Description": "With this release, I think I've got everything working that _should_ be working in the first iteration of this project. The big changes are:\n\n!! Added a -Recurse parameter to Select-Control \n\nThis allows you to shorten this:\n{{\n$notepadConfirmation = Select-Window notepad | Remove-Window -Passthru\n\nSelect-ChildWindow -Window $notepadConfirmation | Select-Control | Select-Control | Select-Control -title \"Do&n't Save\" | Send-Click\n}}\n\nTo this:\n{{\n$notepadConfirmation = Select-Window notepad | Remove-Window -Passthru\nSelect-ChildWindow  -Window $notepadConfirmation | Select-Control -title \"Do&n't Save\"  -recurse | Send-Click\n}}\n\nMore importantly, of course -- you don't have to \"just know\" (or determine by experiment) how many levels of Select-Control you have to dig down to find the button ... in most cases you can get things by window class or by \"title\" text.\n\n!! Added support to Send-Click for clicking on Non-Client areas\n\nBasically, this means I did a lot of work so that double-clicking on the caption of a window will work now.  So for instance, this line will re-dock all your visual studio popup panels:\n{{\nSelect-Window devenv | Select-ChildWindow | Send-Click 10 10 -Double \n}}\n\n!! Caveats\n\nDon't forget, this still doesn't really support frameworks (like WPF) which don't use standard Win32 handles for their controls -- you can send clicks and keystrokes to them, but you'll be flying blind based on the topmost window handle.\n\nIf you find anything that still doesn't work, please let me know ...",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2009-01-21T09:21:47.653-08:00",
+    "Files": [
+      {
+        "Id": "55453160-4bf6-41a4-be7f-7cacc781b9b6",
+        "FileName": "WASP.zip",
+        "Url": "./4/55453160-4bf6-41a4-be7f-7cacc781b9b6",
+        "Type": "Application",
+        "UploadDate": "2009-01-21T09:17:12.603-08:00"
+      },
+      {
+        "Id": "3d4a1cf9-d746-4024-92c5-8400ae66b964",
+        "FileName": "WASP.7z",
+        "Url": "./4/3d4a1cf9-d746-4024-92c5-8400ae66b964",
+        "Type": "Application",
+        "UploadDate": "2009-01-21T09:17:12.353-08:00"
+      }
+    ]
+  }
+]

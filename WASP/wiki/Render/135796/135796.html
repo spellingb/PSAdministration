@@ -1,0 +1,9 @@
+<div class="wikidoc"><ul><li>Select-Window - pick windows by process name or window caption (with wildcard support)</li>
+<li>Select-ChildWindow - pick all owned <b>windows</b> of another window (eg: dialogs, tool windows)</li>
+<li>Select-Control - pick controls (children) of a specific window, by class and/or name and/or index (with wildcard support) -- NOTE: the &quot;Window&quot; can be specified as &quot;-Window 0&quot; to get all parentless windows, which includes windows, dialogs, tooltips, etc... With <b>-Window 0</b> this returns a true superset of the Select-Window output.</li>
+<li>Send-Click - send mouse clicks (any button, with any modifier keys)</li>
+<li>Send-Keys - <a href="http://msdn2.microsoft.com/en-us/library/system.windows.forms.sendkeys">Windows.Forms.SendKeys</a> lets you send keys ... try this: <span class="codeInline">Select-Window notepad | Send-Keys &quot;%(ea)Testing{Enter}{F5}&quot;</span> (and for extra fun, try it with multiple notepad windows open).</li>
+<li>Set-WindowActive - yeah, just activates the window</li>
+<li>Set-WindowPosition - set any one of (or all of) top, left, width, height on a window ... or maximize/minimize/restore</li>
+<li>Get-WindowPosition - get the position (kind-of redundant, actually, since the Window object has it&#39;s position as a property)</li>
+<li>Remove-Window - closes the specified window</li></ul></div><div class="ClearBoth"></div>

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1315648",
+    "ThreadId": "570417",
+    "Html": "Hello,\r<br />\n<br />\ni am using WASP since today, and ill try this:\r<br />\n<br />\nUsing WASP which is sending Send-Keys commands to notepad++; but if click on another application the Send-Keys commands will be send to application which i have opened.\r<br />\n<br />\nIs there a function in WASP where i can send the Send-Keys commands to notepad++ when its not active?\r<br />\n<br />\nMy Script:<br />\n<pre><code>ipmo .\\WASP.dll\n$bla = $false\ntry {            \n$ActiveHandle = [UserWindows]::GetForegroundWindow()            \n$FindProg = Get-Process | Where-Object {$_.Name -eq 'notepad++'}\n    [Microsoft.VisualBasic.Interaction]::AppActivate($FindProg.ID)          \n$FindProg | Select ProcessName, @{Name=&quot;AppTitle&quot;;Expression= {($_.MainWindowTitle)}}            \n} catch {            \n Write-Error &quot;Failed to get active Window details. More Info: $_&quot;            \n}\nwhile($bla -eq $false){\nSelect-Window $FindProg | Send-Keys ('Hello')\nSleep -Seconds 2\nSelect-Window $FindProg | Send-Keys ('Hello')\nSleep -Seconds 2\nSelect-Window $FindProg | Send-Keys ('Hello')\nSleep -Seconds 2\n}</code></pre>\n\n",
+    "PostedDate": "2014-10-22T05:03:55.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1315711",
+    "ThreadId": "570417",
+    "Html": "No. It's not possible, in windows (for your protection).\r<br />\n<br />\nYou can't simulate input to an app that doesn't have focus -- because that would allow malicious apps to do <strong>anything</strong> they wanted.\r<br />\n<br />\nEven when apps fully support UI Automation, and implement the &quot;Value&quot; field, invoking the SetValue member will require focus. See this example, for instance:\r<br />\n<a href=\"http://msdn.microsoft.com/en-us/library/ms750582%28v=vs.110%29.aspx\" rel=\"nofollow\">http://msdn.microsoft.com/en-us/library/ms750582%28v=vs.110%29.aspx</a><br />\n",
+    "PostedDate": "2014-10-22T08:13:33.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

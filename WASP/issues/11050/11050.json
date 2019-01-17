@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am looking to use WASP to control another desktop. \n\nI have installed WASP and create a remote profile which loads the WASP snapin at the start of the session (Add-PSSnapin WASP).\n\nHowever when I run WASP commands I receive no response / output\n\nIs this possible?",
+    "LastUpdatedDate": "2016-01-13T10:14:51.11-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "WASP",
+    "ReportedDate": "2016-01-13T10:14:51.11-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Remote use of WASP",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 11050
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

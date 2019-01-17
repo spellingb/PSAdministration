@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "841088",
+    "ThreadId": "357184",
+    "Html": "\r\n<p>Hi</p>\r\n<p>I am unclear on how to use Select-Control. It says I can use it by</p>\r\n<p>&quot;pick controls by class and/or name and/or index (with wildcard support)&quot;</p>\r\n<p>Yet I really don't see any examples. For instance how to I select a different tab in a form? How do I select values from a dropdown list?</p>\r\n<p>&nbsp;</p>\r\n<p>I am unsure how to find out the names of these controls.</p>\r\n",
+    "PostedDate": "2012-05-25T14:22:29.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

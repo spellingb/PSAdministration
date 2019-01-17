@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am looking for a way to send-keys to a specified textbox. The textbox has a class of \"edit\" and an instance of '3'. I'm just learning powershell and I've been using this snapin pretyy heavily to automate a testing process. Any help would be appreciateed :)",
+    "LastUpdatedDate": "2016-06-24T07:29:44.31-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "WASP",
+    "ReportedDate": "2016-06-24T07:29:44.31-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Send-Keys to Textbox",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 11099
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

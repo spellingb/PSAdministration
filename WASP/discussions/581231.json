@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1353558",
+    "ThreadId": "581231",
+    "Html": "I am trying to use the Task Scheduler, Powershell and WASP to automate the downloading of a file from IE9. The file is generated using javascript on the client browser. The script I have works fine is the task is run as logged on user, however when I change the task to 'Run whether user is logged on or not' it fails.\r<br />\n<br />\nWhen I make a call to 'Select-Window' nothing is returned. Is this expected behaviour?\r<br />\nHow can I find the dialog pop-up and click the Save button - it has the same MainWindowTitle as its parent.<br />\n",
+    "PostedDate": "2015-02-17T14:32:57.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1353563",
+    "ThreadId": "581231",
+    "Html": "Scheduled tasks that don't run &quot;interactive&quot; when the user is logged on can't spawn UI, so opening IE isn't going to work.\r<br />\n<br />\nYou might be able to use Microsoft's Invoke-WebRequest (because it uses IE headless but still seems to run javascript), but I wouldn't even be sure about that. You could possibly use selenium with their phoenixjs(?) headless browser ... but again, I am not sure.<br />\n",
+    "PostedDate": "2015-02-17T15:19:18.21-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

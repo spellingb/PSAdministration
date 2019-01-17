@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "508816",
+    "ThreadId": "231332",
+    "Html": "<p>This doesn't seem to work:</p>\r\n<p>Select-Window -Title untitled - notepad | set-windowactive</p>\r\n<p>What am I doing wrong?</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>TIA!</p>",
+    "PostedDate": "2010-10-18T07:22:05.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "520976",
+    "ThreadId": "231332",
+    "Html": "\r\n<p>Simple, use this instead:</p>\r\n<p></p>\r\n<div style=\"color:black; background-color:white\">\r\n<pre>Select<span style=\"color:gray\">-</span>Window <span style=\"color:gray\">-</span>Title <span style=\"color:#a31515\">&quot;untitled - notepad&quot;</span> | Set<span style=\"color:gray\">-</span>WindowActive\r\n</pre>\r\n</div>\r\n<p></p>\r\n",
+    "PostedDate": "2010-11-12T02:06:52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

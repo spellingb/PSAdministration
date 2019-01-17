@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1320062",
+    "ThreadId": "571536",
+    "Html": "Hello,\r<br />\nI'm trying to automate Windows Logon (CTRL+ALT+DEL) when using Hyper-V on Windows 2012 R2 &quot;vconnect&quot; console.\r<br />\n<br />\nHow can I work with this console? I'm only able to see that Window is activate, but I don't know how to send a CTRL+ALT+DEL, and less how to send user+password to perform a Login..\r<br />\n<br />\nany idea?\r<br />\n<br />\nThanks<br />\n",
+    "PostedDate": "2014-11-07T08:43:10.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1320345",
+    "ThreadId": "571536",
+    "Html": "Well, with Hyper-V's Virtual Machine Connection console you have to press Ctrl+Alt+End to send Ctrl+Alt+Del, but I wouldn't be surprised if it was immune to anything but hardware-level faking, since input to the VM is done via virtual hardware.  If you want to drive it, you probably need to use a Remote Desktop connection, and driver scripts on the client machine.<br />\n",
+    "PostedDate": "2014-11-08T22:23:39.88-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hey,\n\nTrying to enter details into a new window within a program, WASP doesn't seem to be able to do this?\nIt doesn't seem to register another window has opened within the program? Is there a snippet of code I need to enter for it to register a sub-menu?\n\nThe sub menu is within IIS Manager\n\n\nThanks\nThomas",
+    "LastUpdatedDate": "2015-05-19T02:05:17.367-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "WASP",
+    "ReportedDate": "2015-05-19T02:05:17.367-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Opening new window within program - WASP not recognising new window",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 10938
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

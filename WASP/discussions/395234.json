@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "911327",
+    "ThreadId": "395234",
+    "Html": "\r\n<p>I was wondering if it is possible to find all tray applications and then send a right-click to open the popup menu.</p>\r\n",
+    "PostedDate": "2012-09-12T00:37:26.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "911653",
+    "ThreadId": "395234",
+    "Html": "<p>Short answer: yes.&nbsp;</p>\r\n<p>I'm not on Windows right this second, so I'll get back on here later and post how if nobody beats me to it.</p>",
+    "PostedDate": "2012-09-12T09:23:13.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "916459",
+    "ThreadId": "395234",
+    "Html": "\r\n<div style=\"color:black; background-color:white\">\r\n<pre>Import<span style=\"color:gray\">-</span>Module WASP\n\n<span style=\"color:green\">## Starting from the tray container, </span>\nSelect<span style=\"color:gray\">-</span>UIElement <span style=\"color:gray\">-</span>Class Shell_TrayWnd | \n    <span style=\"color:green\">## Pick the real system tray Window </span>\n    Select<span style=\"color:gray\">-</span>UIElement <span style=\"color:gray\">-</span>Class TrayNotifyWnd | \n    <span style=\"color:green\">## It has a the Notification Chevron expander button</span>\n    <span style=\"color:green\">## It also has the &quot;SysPager&quot; which has the icons in it (FYI)</span>\n    <span style=\"color:green\">## Pick the button and click it:</span>\n    Select<span style=\"color:gray\">-</span>UIElement <span style=\"color:gray\">-</span>Name <span style=\"color:#a31515\">&quot;Notification Chevron&quot;</span> | Invoke<span style=\"color:gray\">-</span>Invoke.Invoke\n\n<span style=\"color:green\">## Now start from the Overflow window </span>\nSelect<span style=\"color:gray\">-</span>UIElement <span style=\"color:gray\">-</span>Name <span style=\"color:#a31515\">&quot;Notification Overflow&quot;</span> | \n    <span style=\"color:green\">## Then find the icon container:</span>\n    Select<span style=\"color:gray\">-</span>UIElement <span style=\"color:gray\">-</span>Name <span style=\"color:#a31515\">&quot;Overflow Notification Area&quot;</span> | \n    <span style=\"color:green\">## Pick an icon (in this case, the SkyDrive icon) and click it:</span>\n    Select<span style=\"color:gray\">-</span>UIElement <span style=\"color:gray\">-</span>Name <span style=\"color:#a31515\">&quot;SkyDrive*&quot;</span> | Invoke<span style=\"color:gray\">-</span>Invoke.Invoke\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>That's using <a href=\"http://poshcode.org/3175\">the new script module</a> instead of the binary. I'll try to release that version here this week.</p>\r\n",
+    "PostedDate": "2012-09-23T21:42:10.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

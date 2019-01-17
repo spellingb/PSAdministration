@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 3395,
+    "Title": "select-control outputs cannot be piped into get-windowposition"
+  },
+  {
+    "Id": 10938,
+    "Title": "Opening new window within program - WASP not recognising new window"
+  },
+  {
+    "Id": 11050,
+    "Title": "Remote use of WASP"
+  },
+  {
+    "Id": 11099,
+    "Title": "Send-Keys to Textbox"
+  }
+]

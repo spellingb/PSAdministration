@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1259465",
+    "ThreadId": "549593",
+    "Html": "Had to reboot after unblocking wasp.dll<br />\n",
+    "PostedDate": "2014-06-24T21:17:20.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": "2014-06-24T21:33:12.723-07:00"
+  },
+  {
+    "Id": "1291872",
+    "ThreadId": "549593",
+    "Html": "Had this issue also. Just in-case others run into the issue, when i would unblock wasp.dll it wouldnt stick. It ended up being a permissions issue and i had to give myself full control over that folder despite the administrators group having full control. That solved the issue.<br />\n",
+    "PostedDate": "2014-08-20T19:12:08.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

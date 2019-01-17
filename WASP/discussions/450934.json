@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1071827",
+    "ThreadId": "450934",
+    "Html": "Hello, I was wondering if you would be able to assist me in how to write text to an html webpage textbox using a line in windows powershell. I am able to do this by writing in notepad, but i am trying to automate a login process to a webpage and would like to select the textbox by its html id tag. Thank you!<br />\n",
+    "PostedDate": "2013-07-23T08:39:46.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1079095",
+    "ThreadId": "450934",
+    "Html": "Windows automation can't, in general, see the html tags. You need to get into web automation directly for that (<a href=\"http://huddledmasses.org/did-you-know-powershell-can-use-selenium/comment-page-1/\" rel=\"nofollow\">my suggestion would be selenium</a> there's an interesting &quot;port&quot; to PowerShell here on CodePlex (I haven't tried it yet, but it looks : <a href=\"https://sepsx.codeplex.com/\" rel=\"nofollow\">https://sepsx.codeplex.com/</a><br />\n",
+    "PostedDate": "2013-08-10T11:14:06.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1110959",
+    "ThreadId": "450934",
+    "Html": "If you use Internet Explorer Automation interface, it is possible, but I never tried with any other Browser's API. Here is Powershell method:<br />\n<pre><code>$ie = New-Object -ComObject &quot;InternetExplorer.Application&quot;\n$ie.Visible=1\n$ie.Navigate(&quot;C:\\MyPage.htm&quot;)\n$txtArea=$ie.Document.getElementById(&quot;MyTextBox&quot;) #assuming that your TextBox Id is 'MyTextBox'\n\n$txtArea.InnerText=&quot;Hello world&quot;\n\n$txtArea.Value=&quot;My Value&quot;</code></pre>\n\nHope this helps<br />\n",
+    "PostedDate": "2013-10-23T02:47:26.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

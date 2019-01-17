@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "462936",
+    "ThreadId": "218220",
+    "Html": "<p>Hey everybody,</p>\r\n<p>Not sure if this is at all helpful for anybody, but I've used WASP for executing global hotkeys on some of my systems (primary use was for a TabletPC - switching screen orientations using ATi's global hotkey manager). Here's what I did:</p>\r\n<p>echo &quot;This script is used to activate global hotkeys.&quot;</p>\r\n<p>Import-Module &quot;C:\\Program Files\\Wasp\\WASP.dll&quot;<br>Select-Window powershell | Send-Keys &quot;^%{DOWN}&quot;</p>\r\n<p>Since the Send-Keys cmdlet requires a selected window to send these keys to, I simply selected the powershell window that comes up when the script is launched. Of course, you want to be sure that the window you're directing to won't respond to these global hotkeys, but Ctrl+Shift (as with these simple commands) has generally been a safe bet for me.</p>\r\n<p>A bit of an unorthodox use of WASP, but it got what I needed to done. Thanks for the Module!</p>",
+    "PostedDate": "2010-07-02T20:27:54.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1245720",
+    "ThreadId": "545433",
+    "Html": "I am sorry to have to ask something else but I am kind of stuck.  I have been playing with WASP and found that when I build my script in the ISE that it works just how I want when i run it.  However when I try to launch the same script from say &quot;powershell c:\\myscript.ps1 the command window comes up but stays in the foreground and is not yielding focus to the windows launched by the script.  Suggestions?<br />\n",
+    "PostedDate": "2014-05-15T06:26:47.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1245739",
+    "ThreadId": "545433",
+    "Html": "Nevermind it was fluke, its working right now.<br />\n",
+    "PostedDate": "2014-05-15T07:20:13.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

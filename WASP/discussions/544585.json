@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1242547",
+    "ThreadId": "544585",
+    "Html": "I noticed a earlier question about WASP Support in Powershell 3.  I get the same error but since the question is dated I thought I would ask if the answer given to it is the same.  Here is my error\r<br />\nImport-Module : Could not load file or assembly 'file:///C:\\Users\\SAM\\Documents\\WindowsPowerShell\\Modules\\WASP\\WASP.dll' or one of its \r<br />\ndependencies. Operation is not supported. (Exception from HRESULT: 0x80131515)<br />\n",
+    "PostedDate": "2014-05-07T05:50:40.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1243186",
+    "ThreadId": "544585",
+    "Html": "It's probably &quot;blocked&quot; because of how you downloaded it (with a browser) -- use Unblock-File (or if that's not a command (I can't remember what version that got added in), you'll have to right-click the file and view properties and unblock it there).<br />\n",
+    "PostedDate": "2014-05-08T10:26:46.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1243255",
+    "ThreadId": "544585",
+    "Html": "That was it! Thanks.<br />\n",
+    "PostedDate": "2014-05-08T12:41:00.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

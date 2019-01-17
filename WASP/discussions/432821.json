@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "999949",
+    "ThreadId": "432821",
+    "Html": "Hey people of the forum<br />\n<br />\nso i was making this script for automation which needs to click on a button with a mouse,<br />\ni have installed WASP but Send-Click does't seem to be working or mabye i'm just doing something really wrong<br />\n<br />\ni dont know if it has anything to do with it but i'm running on windows server 2008 r2 datacenter<br />\n<br />\nif anyone whould bother to tell me how to use the command that would be great<br />\nPhratzz<br />\n",
+    "PostedDate": "2013-02-12T03:54:26.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

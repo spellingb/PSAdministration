@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "126707",
+    "ThreadId": "38209",
+    "Html": "I&nbsp;have interests to host PowerShell in WinForm smart client apps.&nbsp;If I&nbsp;run the follwoing script in the app, <br>\r\nGet-Process | Out-GridView<br>\r\nI get the GridView in another process. I want to&nbsp;embed the GridView within the app. Can I use WASP to embed the GridView in WinForm? <br>\r\n<br>\r\nRegards,<br>\r\nFrank\r\n",
+    "PostedDate": "2008-10-21T16:53:04.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

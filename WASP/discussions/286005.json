@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "724516",
+    "ThreadId": "286005",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>I am using your WASP plugin, and it's proving very useful for automating a legacy app with no command line interface.</p>\r\n<p>Unfortunately, the sending of Keys and mouse Clicks to another app can provie a a bit hit-and-miss due to Windoze timing variance.</p>\r\n<p>Is there a switch for SendKeys that will exhibit behaviour similar to .Net SendWait function when sending to another application:</p>\r\n<p><a href=\"http://msdn.microsoft.com/en-us/library/ms171548.aspx\">http://msdn.microsoft.com/en-us/library/ms171548.aspx</a></p>\r\n<p>Thanks for a great app!</p>\r\n<p>Jay.</p>\r\n",
+    "PostedDate": "2012-01-12T15:15:52.94-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

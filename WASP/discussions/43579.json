@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "144878",
+    "ThreadId": "43579",
+    "Html": "Is it possible to have some sample commands posted somewhere on this site, I tried running the 'help' function mentioned on the releases page for this project, and receive a <strong>&quot;Unrecognized token in source text.&nbsp; -- Line3 Cahr12&nbsp; get-help @ &lt;&lt;&lt;&lt; args -EA &quot;SilentlyContinue&quot; -Full:$Full&quot;</strong>  on the 3rd line 12th character (the @ symbol).<br>\r\nI'm not sure what that is all about, but if there were some samples posted here that would help a ton.<br>\r\n<br>\r\nthanks for your time.<br>\r\n<br>\r\n(note: My current challenge is sending mouse clicks, the cmdlet appears to be selecting the window properly, but not sending the actual click to the window.<br>\r\nThe line in question is <br>\r\n<strong>send-click 1969676 -Button Left -X 20 -Y 50</strong><br>\r\nWhere&nbsp;1969676 is the handle for the desired window to click on)<br>\r\n",
+    "PostedDate": "2009-01-06T14:54:46.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "148847",
+    "ThreadId": "43579",
+    "Html": "<a href=\"http://www.codeplex.com/WASP/Wiki/View.aspx?title=Some Usage Examples\">Some Usage Examples</a><br>\r\n",
+    "PostedDate": "2009-01-20T11:39:37.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433191",
+    "ThreadId": "43579",
+    "Html": "<p>Hello,</p>\r\n<p>I looked through the usage examples.</p>\r\n<p>Very helpful.</p>\r\n<p>However how do you send a down arrow key?</p>\r\n<p>Any help with that&nbsp;would&nbsp;be appreciated.</p>\r\n<p>Also love the snapin works great!</p>",
+    "PostedDate": "2010-04-20T07:24:07.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433192",
+    "ThreadId": "43579",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>mjandrews wrote:</strong><br>\r\n<p>Hello,</p>\r\n<p>I looked through the usage examples.</p>\r\n<p>Very helpful.</p>\r\n<p>However how do you send a down arrow key?</p>\r\n<p>Any help with that&nbsp;would&nbsp;be appreciated.</p>\r\n<p>Also love the snapin works great!</p>\r\n</blockquote>\r\n<p>Doh...</p>\r\n<p>Found the answer myself but thought I'd post it here as well to help others.</p>\r\n<p><a href=\"http://msdn.microsoft.com/en-us/library/system.windows.forms.sendkeys.aspx\">http://msdn.microsoft.com/en-us/library/system.windows.forms.sendkeys.aspx</a></p>\r\n<p>Great link for all key&nbsp;sequences.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-20T07:26:59.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

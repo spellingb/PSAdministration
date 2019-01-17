@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "1426284",
+    "ThreadId": "638250",
+    "Html": "Hey,\r<br />\n<br />\nTrying to enter details into a new window within a program, WASP doesn't seem to be able to do this?\r<br />\nIt doesn't seem to register another window has opened within the program? Is there a snippet of code I need to enter for it to register a sub-menu?\r<br />\n<br />\nThe sub menu is within IIS Manager\r<br />\n<br />\n Select-ChildWindow  - Does not seem to work.. how is it actually applied? Very little documentation.\r<br />\n<br />\nThanks\r<br />\nThomas<br />\n",
+    "PostedDate": "2015-05-19T04:29:45.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1486254",
+    "ThreadId": "638250",
+    "Html": "Did you ever find an answer to this? im having the same problem atm<br />\n",
+    "PostedDate": "2016-10-17T05:28:20.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1487705",
+    "ThreadId": "638250",
+    "Html": "Select-ChildWindow finds windows that have the original window as their &quot;Parent&quot; -- this is a Windows API concept, it's for dialogs and such, not necessarily mutli-window apps, and not for <br />\n",
+    "PostedDate": "2016-11-10T11:14:06.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

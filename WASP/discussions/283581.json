@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "714725",
+    "ThreadId": "283581",
+    "Html": "\r\n<p>Hi,</p>\r\n<p>i am trying to Download and save a File from Internet Explorer and my Send-keys does not work:</p>\r\n<p>The First Window i get, s the download Window but i also get the Childwindow: File Download - Security Warning:</p>\r\n<p>Select-code -Title &quot;*mytitle* | Select-Childwindow | Set-WindowActive | send-keys &quot;%s&quot;</p>\r\n<p>The Window is getting active, but the Send-Keys does not work. I can't disable the Warning so is there any way to get around this?</p>\r\n<p>&#65279;&#65279;my guess is that&nbsp;there a special protection on this Dialog?!?</p>\r\n",
+    "PostedDate": "2011-12-20T03:08:30.65-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

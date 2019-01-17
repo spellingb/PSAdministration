@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "1320187",
+    "ThreadId": "571559",
+    "Html": "I am trying to run a PS script to maximize a specific application if it is not currently maximized. \r<br />\nI am currently just looking at the window width to determine the state, if anyone knows a better way please ley me know. \r<br />\n<br />\nthe issue im having is that the script is being run through a remote monitoring app that runs under the SYSTEM account and it forces powershell to run as the same user. because of this my script doesn't work.\r<br />\n<br />\nthis is my script\r<br />\n<br />\nAdd-PSSnapin WASP\r<br />\n$s = select-window 'notepad'\r<br />\n$n = select-window 'notepad' | get-windowposition | Format-Wide -Property Width\r<br />\nif ($n -notcontains 1920)<br />\n<pre><code>{\n  $s | set-windowposition -Maximize\n}\n</code></pre>\n\nand I have tried launching it via CMD and PS\r<br />\n/c PowerShell.exe -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File &quot;&quot;C:\\WASP\\maximize.ps1&quot;&quot;' -Verb RunAs}&quot;\r<br />\n<br />\nI know its running because I can change it to \r<br />\n[Environment]::UserName | out-file c:\\wasp\\test.txt\r<br />\n<br />\nand it outputs SYSTEM...\r<br />\n<br />\n<br />\nany ideas on how to get this to run under the currently logged in user?<br />\n",
+    "PostedDate": "2014-11-07T16:18:02.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "1320340",
+    "ThreadId": "571559",
+    "Html": "I think invoking code &quot;as&quot; the user from system would be a violation of a security boundry ... you'd have to get credentials.\r<br />\n<br />\nAt that point it's a generic problem, and there are lot's of suggestions for how to run scripts as another user out there ;-)\r<br />\n<br />\nPersonally, I think the simplest thing is to use a scheduled task with stored credentials, but I don't know what your exact use case is.<br />\n",
+    "PostedDate": "2014-11-08T20:54:46.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
