@@ -1,61 +1,35 @@
-﻿
-
-[CmdletBinding(DefaultParameterSetName='None')]
+﻿[CmdletBinding(DefaultParameterSetName='None')]
 Param
 (
     # Param1 help description
-    [Parameter(ParameterSetName = 'NextHop')]
-    $NextHop,
+    [Parameter(Mandatory = $true)]
+    $Network,
     #$NextHop = '100.69.197.253',
 
-    [Parameter(ParameterSetName = 'DestinationPrefix')]
-    $DestinationPrefix,
+    [Parameter(Mandatory = $true)]
+    $SubNet,
 
-    [ValidateSet('ActiveStore','PersistentStore')]
-    [string]$PolicyStore = 'ActiveStore',
-
-    # Param2 help description
+    [Parameter(Mandatory = $true)]
+    $Gateway,
+    
+    [Switch]$Persistent,
+    
     [string[]]
-    $Computers = ( Get-Content 'C:\Users\fhadmin\Desktop\computers.txt' ),
+    $Computers = ( Get-Content 'C:\Users\fhadmin\Desktop\computers.txt' )
 
-    [switch]
-    $ExporttoCSV
 )
 
 Begin
 {
 
-    $Return = @()
+    [string]$routeString = 'Invoke-Expression "route'
 
-    $params = @{
-        AddressFamily = 'IPv4'
-        ErrorAction = 'SilentlyContinue'
+    if ( $PSBoundParameters['Persistent'] ) {
+        $routeString += ' -p'
     }
+    $routeString += ' add {0} MASK {1} {2}"' -f $Network, $SubNet,$Gateway
 
-    if ( $PSBoundParameters['NextHop'] ) {
-        $params['Nexthop'] = $NextHop
-    }
-
-    if ( $PSBoundParameters['PolicyStore'] ) {
-        $params['PolicyStore'] = $PolicyStore
-    }
-
-    if ( $PSBoundParameters['DestinationPrefix'] ) {
-        $params['DestinationPrefix'] = $DestinationPrefix
-    }
-
-    $scriptblock =  [scriptblock]::Create( @"
-
-    param ( `$Params )
-
-    &{
-
-        Get-NetRoute @params | 
-
-            Select-Object DestinationPrefix,NextHop,RouteMetric,InterfaceAlias,TypeOfRoute,Store
-
-    } @psboundparameters
-"@ )
+    $scriptblock =  [scriptblock]::Create( $routeString )
 
     Function Test-RemoteConnection ( $Conn ) {
 
@@ -87,19 +61,35 @@ Process
 
             if ( Test-RemoteConnection $c ) {
 
-                $command = Invoke-Command -ScriptBlock $scriptblock -ComputerName $c -ArgumentList $params
+                #Invoke-Command -ScriptBlock $test -ComputerName $c
 
-                if ( [string]::IsNullOrEmpty( $command ) ) {
+                $tempresult = '' | Select-Object Computer,Result
 
-                    Write-Warning "No Routes found matching Parameter: $Route"
+                $tempresult.Computer = $c
 
-                } else {
+                try {
 
-                    $Return += $command
+                    $CommandResult = Invoke-Command -ScriptBlock $scriptblock -ComputerName $c -ErrorAction Stop
 
-                    $command
+                    if ( [string]::IsNullOrEmpty( $CommandResult ) ) {
+
+                        Write-Warning "No Results"
+
+                        Write-Warning "Computer: $c"
+
+                        Write-Warning "Command: $routeString"
+
+                    }
+
+                    $tempresult.Result = $CommandResult
+
+                } catch {
+
+                    $tempresult.Result = $_.Exception.Message
 
                 }
+
+                $tempresult
 
             } else {
 
@@ -112,13 +102,6 @@ Process
 End
 {
 
-    if ( $ExporttoCSV ) {
-
-        $Exportpath = "$home\desktop\RouteAudit.csv"
-
-        $Return | Export-Csv -Path $Exportpath -Force -NoTypeInformation
-
-    }
 }
 
 
